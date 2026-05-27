@@ -1,18 +1,9 @@
 <template>
   <div>
-    <PageHeader
-      :title="title"
-      :subtitle="subtitle"
-      class="mt-3 mb-6 mx-4 pl-3"
-    />
+    <PageHeader :title="title" :subtitle="subtitle" class="mt-3 mb-6" />
     <v-row>
-      <v-col
-        v-for="(stat, index) in stats"
-        :key="index"
-        cols="12"
-        class="mt-2 px-7"
-      >
-        <stat-card
+      <v-col v-for="(stat, index) in stats" :key="index" cols="12" class="mt-2">
+        <StatCard
           :icon="stat.icon"
           :label="stat.label"
           :value="stat.value"

@@ -1,0 +1,27 @@
+<template>
+  <div>
+    <v-data-table
+      :headers="headers"
+      :items="items"
+      :items-per-page="5"
+      class="elevation-1"
+    >
+    </v-data-table>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    headers: {
+      type: Array,
+    },
+    items: {
+      type: Array,
+    },
+  },
+};
+</script>
+
+<style scoped>
+</style>

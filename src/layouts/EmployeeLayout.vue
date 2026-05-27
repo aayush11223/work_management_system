@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container fluid>
     <v-app-bar color="deep-purple" dark flat>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
@@ -53,7 +53,7 @@
     <v-main>
       <router-view />
     </v-main>
-  </div>
+  </v-container>
 </template>
 
 <script>

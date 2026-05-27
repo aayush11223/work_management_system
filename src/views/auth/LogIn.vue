@@ -23,6 +23,16 @@
 
       <v-form ref="form" @submit.prevent="handleLogin">
         <v-text-field
+          v-model="name"
+          placeholder="Enter your name"
+          :rules="nameRules"
+          dense
+          autocomplete="new-name"
+          name="new-name"
+          class="mb-2"
+        />
+
+        <v-text-field
           v-model="email"
           placeholder="Enter your email"
           :rules="emailRules"
@@ -63,10 +73,16 @@ export default {
   name: "LogIn",
   data() {
     return {
+      name: "",
       email: "",
       password: "",
       showPassword: false,
       loading: false,
+      nameRules: [
+        (v) => !!v || "Name is required",
+        (v) => (v && v.length <= 50) || "Name must be less than 50 characters",
+      ],
+
       emailRules: [
         (v) => !!v || "Email is required", //converts value into boolean
 

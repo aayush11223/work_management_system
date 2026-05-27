@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card fluid>
     <v-card-title>
       {{ title }}
     </v-card-title>
@@ -18,7 +18,6 @@ export default {
     },
     subtitle: {
       type: String,
-      required: true,
     },
   },
 };
