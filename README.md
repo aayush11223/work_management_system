@@ -1,24 +1,11 @@
-# work_management_system
+<!-- Task 5 — Build AttendanceTable component (45 mins)
+File: src/components/attendance/AttendanceTable.vue
+What it needs:
 
-## Project setup
-```
-yarn install
-```
+Props: items (Array), loading (Boolean)
+Use v-data-table from Vuetify
+Columns: Date, Check In, Check Out, Status
+No emits needed yet — read only for now
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+What to google: vuetify 2 v-data-table headers items, vuetify 2 v-data-table loading
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -1,8 +1,13 @@
+
+
 <template>
   <div
     class="d-flex justify-center align-center bg"
     style="height: 100vh; width: 100%"
   >
+    <!-- make component where you dont integrate the api in component but in the
+    views or page to increase reusability for the whole auth section -->
+
     <v-card
       class="d-flex flex-column justify-center pa-10 rounded-lg"
       dark

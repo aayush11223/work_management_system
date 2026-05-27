@@ -1,3 +1,1 @@
-<template>
-  <h1>AttendanceView</h1>
-</template>
+<template><div>AttendanceView</div></template>
