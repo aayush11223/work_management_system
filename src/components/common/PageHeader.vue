@@ -1,7 +1,9 @@
 <template>
   <v-card fluid>
-    <v-card-title>
-      {{ title }}
+    <v-card-title class="d-flex align-center">
+      <div class="title">{{ title }}</div>
+      <v-spacer />
+      <slot name="actions" />
     </v-card-title>
     <v-card-subtitle>
       {{ subtitle }}

@@ -74,7 +74,6 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log("Submitted Attendance");
       this.showDialog = false;
     },
   },
