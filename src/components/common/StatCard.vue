@@ -27,15 +27,12 @@ export default {
   props: {
     icon: {
       type: String,
-      required: true,
     },
     label: {
       type: String,
-      required: true,
     },
     value: {
       type: [String, Number],
-      required: true,
     },
     color: {
       type: String,

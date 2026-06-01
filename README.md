@@ -1,71 +1,58 @@
 
 
-Task 5 — Build WorkLogTable component (45 mins)
-File: src/components/worklog/WorkLogTable.vue
+Task 22 — Build EmployeeTable component (45 mins)
+File: src/components/admin/EmployeeTable.vue
 What it needs:
 
-Props: items (Array), loading (Boolean)
-Use v-data-table
-Columns: Date, Description, Units, Hours
-Read only — no action buttons, no emits needed
+Props: items (Array), loading (Boolean), search (String)
+Use v-data-table with the search prop passed directly into it
+Columns: Name, Email, Department, Role, Salary
+Clicking a row emits select with the employee object
+Use @click:row on v-data-table to handle row click
 
-What to google: vuetify 2 v-data-table
+What to google: vuetify 2 v-data-table search, vuetify 2 v-data-table click row
 
-Task 6 — Build WorkLogForm component (1 hour)
-File: src/components/worklog/WorkLogForm.vue
+Task 23 — Build EmployeeListView.vue (1 hour)
+File: src/views/admin/EmployeeListView.vue
 What it needs:
 
-Props: visible (Boolean)
-Use v-dialog
-Inside dialog: v-text-field for date, v-textarea for description, v-text-field for units (type number), v-text-field for hours (type number)
-Validation rules: description min 5 chars, units must be positive integer, hours max 24
-Cancel emits close
-Submit validates first then emits submit with form data
-After submit, reset the form fields back to empty
+Import EmployeeTable, PageHeader
+Hardcoded employees array in data() with at least 5 records each having: id, name, email, department, role, salary
+A v-text-field with search icon at top for search input — bind to searchQuery in data
+Pass employees as items and searchQuery as search into EmployeeTable
+When select is emitted, navigate to /admin/employees/:id using this.$router.push
 
-What to google: vuetify 2 v-form reset, vuetify 2 number field validation
+What to google: vue router push with params, vuetify 2 v-text-field prepend-icon
 
-Task 7 — Build WorkLogView.vue (45 mins)
-File: src/views/employee/WorkLogView.vue
-What it needs:
+Task 24 — End of day cleanup (30 mins)
 
-Import WorkLogTable, WorkLogForm, PageHeader
-Hardcoded logs array in data() with at least 4 records, each having: id, date, description, units, hours
-A floating action button (v-btn with fab prop) that opens the dialog
-Pass logs into WorkLogTable as items
-Pass showDialog into WorkLogForm as visible
-On submit emit — push new log into logs array, close dialog
-
-What to google: vuetify 2 v-btn fab fixed, vue fab button bottom right
-
-Task 8 — End of day review and cleanup (30 mins)
-Go through every file you touched today and do these things:
-
-Remove any leftover console.log statements
-Make sure every component has a name property in its export default
-Check that every form resets after submit
-Test on a narrow browser window — do tables scroll horizontally on small screens?
+Add /profile route to router under EmployeeLayout children
+Add all /admin/* routes to router under AdminLayout children
+Test that clicking an employee row navigates to the correct URL with the id
+Check AdminLayout nav links all work
+No red errors in console
 
 
 End of day checklist:
 
-LeaveStatusChip shows correct color per status
-LeaveView table shows hardcoded leaves with colored chips
-Apply Leave dialog opens, validates, and adds to the table on submit
-WorkLogView table shows hardcoded logs
-FAB button opens the work log dialog
-Submit adds new log to the table
-No red errors in browser console
+MonthPicker dropdowns render and emit correctly
+MonthlySummaryView shows stat cards and paycheck breakdown
+ProfileView shows user info and password form with validation
+AdminLayout shell works with correct nav links
+EmployeeListView table shows employees with working search
+Clicking a row navigates to /admin/employees/:id
+No red errors in console
 
 
-Files you will have created by end of Day 2:
+Files created by end of Day 3:
 
-src/components/leave/LeaveStatusChip.vue
-src/components/leave/LeaveRequestTable.vue
-src/components/leave/LeaveRequestForm.vue
-src/components/worklog/WorkLogTable.vue
+src/components/paycheck/MonthPicker.vue
+src/components/paycheck/PaycheckSummaryCard.vue
 src/components/worklog/WorkLogForm.vue
-src/views/employee/LeaveView.vue
-src/views/employee/WorkLogView.vue
+src/views/employee/MonthlySummaryView.vue
+src/views/ProfileView.vue
+src/layouts/AdminLayout.vue
+src/components/admin/EmployeeTable.vue
+src/views/admin/EmployeeListView.vue
+Placeholder files for all remaining admin views
 
-Come back in the evening and we plan Day 3. Good luck tomorrow.
