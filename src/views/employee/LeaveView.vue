@@ -4,15 +4,13 @@
     <PageHeader title="My Leave Requests" />
 
     <div class="d-flex justify-end">
-      <v-btn class="my-3" color="primary" @click="showDialog = true">
+      <v-btn class="my-3 mr-2" color="primary" @click="showDialog = true">
         Apply Leave
       </v-btn>
     </div>
 
-    <!-- Leave Request Table -->
     <LeaveRequestTable :items="leaves" :loading="false" :showActions="false" />
 
-    <!-- Leave Request Form Dialog -->
     <LeaveRequestForm
       :visible="showDialog"
       @close="showDialog = false"

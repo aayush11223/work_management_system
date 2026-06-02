@@ -1,16 +1,18 @@
 <template>
   <v-container fluid>
-    <v-card>
+    <v-card height="100vh">
       <v-app-bar color="deep-purple" dark flat>
         <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
-        <v-toolbar-title>Attendance System</v-toolbar-title>
+        <v-toolbar-title>Work Management System</v-toolbar-title>
 
         <v-spacer></v-spacer>
 
         <v-toolbar-title class="text-body-1"> Aayush Basnet </v-toolbar-title>
 
-        <v-icon class="mx-4" x-large> mdi-account-circle </v-icon>
+        <v-btn class="ml-1" icon to="/profile">
+          <v-icon x-large> mdi-account-circle </v-icon>
+        </v-btn>
       </v-app-bar>
 
       <v-navigation-drawer v-model="drawer" absolute temporary>
@@ -51,9 +53,8 @@
         </v-list>
       </v-navigation-drawer>
 
-      <v-main>
-        <router-view /> </v-main
-    ></v-card>
+      <v-main> <router-view /> </v-main>
+    </v-card>
   </v-container>
 </template>
 
@@ -89,11 +90,6 @@ export default {
           title: "Summary",
           icon: "mdi-poll",
           route: "/summary",
-        },
-        {
-          title: "Profile",
-          icon: "mdi-account-circle",
-          route: "/profile",
         },
       ],
     };

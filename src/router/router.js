@@ -1,8 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import AuthLayout from "../layouts/AuthLayout.vue";
-import EmployeeLayout from "../layouts/EmployeeLayout.vue";
+import AuthLayout from "@/layouts/AuthLayout.vue";
+import EmployeeLayout from "@/layouts/EmployeeLayout.vue";
+import AdminLayout from "@/layouts/AdminLayout.vue"
 
 Vue.use(VueRouter);
 
@@ -30,7 +31,7 @@ const routes = [
 
     // Employee Layout
     {
-        path: "/",
+        path: '/',
         component: EmployeeLayout,
         meta: { requiresAuth: true },
 
@@ -38,41 +39,77 @@ const routes = [
             {
                 path: "dashboard",
                 name: "dashboard",
-                component: () => import("../views/DashboardView.vue"),
+                component: () => import("@/views/DashboardView.vue"),
             },
 
             {
                 path: "attendance",
                 name: "attendance",
-                component: () => import("../views/employee/AttendanceView.vue"),
+                component: () => import("@/views/employee/AttendanceView.vue"),
             },
 
             {
                 path: "leave",
                 name: "leave",
-                component: () => import("../views/employee/LeaveView.vue"),
+                component: () => import("@/views/employee/LeaveView.vue"),
             },
 
             {
                 path: "worklog",
                 name: "worklog",
-                component: () => import("../views/employee/WorkLogView.vue"),
+                component: () => import("@/views/employee/WorkLogView.vue"),
             },
 
             {
                 path: "summary",
                 name: "summary",
                 component: () =>
-                    import("../views/employee/MonthlySummaryView.vue"),
+                    import("@/views/employee/MonthlySummaryView.vue"),
             },
 
             {
                 path: "profile",
                 name: "profile",
-                component: () => import("../views/ProfileView.vue"),
+                component: () => import("@/views/ProfileView.vue"),
             },
         ],
     },
+
+    // Admin Layout
+    {
+        path: '/admin',
+        component: AdminLayout,
+        meta: { requiresAuth: true, },
+
+        children: [
+            {
+                path: "dashboard",
+                name: "admin-dashboard",
+                component: () => import("@/views/DashboardView.vue"),
+            },
+            {
+                path: 'employees',
+                component: () => import("@/views/admin/EmployeeListView.vue")
+            },
+            {
+                path: 'attendance',
+                component: () => import("@/views/admin/AttendanceView.vue")
+            },
+            {
+                path: 'leaves',
+                component: () => import("@/views/admin/LeavesView.vue")
+            },
+            {
+                path: 'worklogs',
+                component: () => import("@/views/admin/WorkLogsView.vue")
+            },
+            {
+                path: 'reports',
+                component: () => import("@/views/admin/ReportsView.vue")
+            }
+        ]
+    }
+
 ];
 
 const router = new VueRouter({

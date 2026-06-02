@@ -1,8 +1,9 @@
 <template>
   <div>
-    <PageHeader class="my-3" title="My Work Summary" />
+    <PageHeader title="My Work Summary" />
 
     <MonthPicker
+      class="mt-3"
       :value="{
         month: selectedMonth,
         year: selectedYear,
@@ -11,30 +12,17 @@
     />
 
     <v-row>
-      <v-col cols="12" md="4">
+      <v-col
+        v-for="(stat, index) in stats"
+        :key="index"
+        cols="12"
+        class="mb-3 pt-0"
+      >
         <StatCard
-          label="Attendance Days"
-          :value="stats.attendanceDays"
-          color="success"
-          icon="mdi-account-check"
-        />
-      </v-col>
-
-      <v-col cols="12" md="4">
-        <StatCard
-          label="Leaves Taken"
-          :value="stats.leavesTaken"
-          icon="mdi-account-arrow-right"
-          color="warning"
-        />
-      </v-col>
-
-      <v-col cols="12" md="4">
-        <StatCard
-          label="Total Units"
-          :value="stats.totalUnits"
-          icon="mdi-file-document-check"
-          color="info"
+          :icon="stat.icon"
+          :label="stat.label"
+          :value="stat.value"
+          :color="stat.color"
         />
       </v-col>
     </v-row>
@@ -62,11 +50,32 @@ export default {
       selectedMonth: new Date().getMonth() + 1,
       selectedYear: new Date().getFullYear(),
 
-      stats: {
-        attendanceDays: 22,
-        leavesTaken: 2,
-        totalUnits: 145,
-      },
+      stats: [
+        {
+          label: "Attendance Days",
+          value: 22,
+          icon: "mdi-account-check",
+          color: "success",
+        },
+        {
+          label: "Leaves Taken",
+          value: 2,
+          icon: "mdi-account-arrow-right",
+          color: "warning",
+        },
+        {
+          label: "Pending Leaves",
+          value: 5,
+          icon: "mdi-account-clock",
+          color: "info",
+        },
+        {
+          label: "Total Units",
+          value: 145,
+          icon: "mdi-file-document-check",
+          color: "primary",
+        },
+      ],
 
       summary: {
         baseSalary: 3500,

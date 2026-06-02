@@ -1,8 +1,13 @@
 <template>
   <div>
-    <PageHeader :title="title" class="mt-3" />
+    <PageHeader :title="title" />
     <div class="d-flex justify-end">
-      <v-btn depressed color="primary" class="my-3" @click="showDialog = true">
+      <v-btn
+        depressed
+        color="primary"
+        class="my-3 mr-2"
+        @click="showDialog = true"
+      >
         Mark Attendance
       </v-btn>
     </div>
@@ -30,7 +35,7 @@ export default {
   },
   data() {
     return {
-      title: "Attendance",
+      title: "My Attendance",
       showDialog: false,
       headers: [
         { text: "Date", value: "date" },

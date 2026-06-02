@@ -1,8 +1,14 @@
 <template>
   <div>
-    <PageHeader :title="title" :subtitle="subtitle" class="mt-3 mb-6" />
+    <PageHeader :title="title" />
     <v-row>
-      <v-col v-for="(stat, index) in stats" :key="index" cols="12" class="mt-2">
+      <v-col
+        v-for="(stat, index) in stats"
+        :key="index"
+        cols="12"
+        sm="6"
+        class="mt-2"
+      >
         <StatCard
           :icon="stat.icon"
           :label="stat.label"
@@ -20,44 +26,78 @@ import StatCard from "@/components/common/StatCard.vue";
 
 export default {
   name: "DashboardView",
+
   components: {
     StatCard,
     PageHeader,
   },
-  data() {
-    return {
-      title: "My Workspace",
 
-      subtitle:
-        "Your personalized hub for today's priorities, upcoming deadlines, and assigned tasks.",
+  computed: {
+    isAdmin() {
+      return this.$route.name === "admin-dashboard"; // matches name in router.js
+    },
 
-      stats: [
-        {
-          label: "Total Present",
-          value: 42,
-          icon: "mdi-account-check",
-          color: "success",
-        },
-        {
-          label: "Leaves Taken",
-          value: 3,
-          icon: "mdi-account-arrow-right",
-          color: "warning",
-        },
-        {
-          label: "Pending Leaves",
-          value: 5,
-          icon: "mdi-account-clock",
-          color: "info",
-        },
-        {
-          label: "Work Logs Submitted",
-          value: 38,
-          icon: "mdi-file-document-check",
-          color: "primary",
-        },
-      ],
-    };
+    title() {
+      return this.isAdmin ? "Admin Dashboard" : "My Workspace";
+    },
+
+    stats() {
+      if (this.isAdmin) {
+        return [
+          {
+            label: "Total Employees",
+            value: 24,
+            icon: "mdi-account-group",
+            color: "primary",
+          },
+          {
+            label: "Present Today",
+            value: 18,
+            icon: "mdi-account-check",
+            color: "success",
+          },
+          {
+            label: "Pending Leave Requests",
+            value: 5,
+            icon: "mdi-account-clock",
+            color: "warning",
+          },
+          {
+            label: "Departments",
+            value: 6,
+            icon: "mdi-office-building",
+            color: "info",
+          },
+        ];
+      } else {
+        return [
+          {
+            label: "Total Present",
+            value: 42,
+            icon: "mdi-account-check",
+            color: "success",
+          },
+          {
+            label: "Leaves Taken",
+            value: 3,
+            icon: "mdi-account-arrow-right",
+            color: "warning",
+          },
+          {
+            label: "Pending Leaves",
+            value: 5,
+            icon: "mdi-account-clock",
+            color: "info",
+          },
+          {
+            label: "Work Logs Submitted",
+            value: 38,
+            icon: "mdi-file-document-check",
+            color: "primary",
+          },
+        ];
+      }
+    },
   },
 };
 </script>

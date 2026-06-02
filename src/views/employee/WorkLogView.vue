@@ -1,31 +1,20 @@
 <template>
   <div>
-    <!-- Page Header -->
-    <PageHeader title="Work Logs" subtitle="Track and manage daily work logs" />
+    <PageHeader title="My Work Logs" />
 
-    <!-- Work Log Table -->
+    <div class="d-flex justify-end">
+      <v-btn class="my-3 mr-2" color="primary" @click="showDialog = true">
+        Log Work
+      </v-btn>
+    </div>
+
     <WorkLogTable :items="logs" :loading="loading" />
 
-    <!-- Work Log Form Dialog -->
     <WorkLogForm
       :visible="showDialog"
       @close="showDialog = false"
       @submit="handleSubmit"
     />
-
-    <!-- Floating Action Button -->
-    <v-btn
-      fab
-      color="primary"
-      dark
-      fixed
-      bottom
-      right
-      class="mb-6 mr-6"
-      @click="showDialog = true"
-    >
-      <v-icon>mdi-plus</v-icon>
-    </v-btn>
   </div>
 </template>
 
