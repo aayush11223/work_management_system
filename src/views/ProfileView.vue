@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- User Info Card -->
-    <v-card class="pa-4 mb-4">
+    <v-card class="pa-4 mb-4" flat>
       <v-card-title>Profile Information</v-card-title>
 
       <v-simple-table>
@@ -33,9 +33,10 @@
         </tbody>
       </v-simple-table>
     </v-card>
+    <v-divider> </v-divider>
 
     <!-- Password Card -->
-    <v-card class="pa-4">
+    <v-card class="pa-4" flat>
       <v-card-title>Change Password</v-card-title>
 
       <v-form ref="form">
