@@ -14,12 +14,11 @@
       </v-btn>
     </v-app-bar>
 
-    <v-navigation-drawer dark v-model="drawer" absolute temporary>
+    <v-navigation-drawer v-model="drawer" dark absolute temporary>
       <v-list nav dense>
         <v-list-item-group
           v-model="group"
-          active-class="grey darken-1
---text text--accent-4"
+          active-class="grey darken-1--text text--accent-4"
         >
           <v-list-item
             v-for="(item, index) in menuItems"
