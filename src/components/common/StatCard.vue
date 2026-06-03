@@ -1,6 +1,6 @@
 <template>
-  <v-card class="pa-4" elevation="2">
-    <div class="d-flex align-center justify-space-between">
+  <v-card class="pa-4" flat>
+    <div class="d-flex align-center justify-space-between pb-4">
       <div>
         <div class="caption grey--text text-uppercase font-weight-bold pl-3">
           {{ label }}
@@ -18,6 +18,7 @@
         </v-avatar>
       </div>
     </div>
+    <v-divider> </v-divider>
   </v-card>
 </template>
 

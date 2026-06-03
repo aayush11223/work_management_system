@@ -108,6 +108,11 @@ const routes = [
                 component: () => import("@/views/admin/ReportsView.vue")
             }
         ]
+    },
+
+    //Employee Details based on id
+    {
+        path: 'admin/employees/:id'
     }
 
 ];

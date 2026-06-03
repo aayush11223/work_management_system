@@ -11,21 +11,19 @@
       @change="handleMonthChange"
     />
 
-    <v-row>
-      <v-col
-        v-for="(stat, index) in stats"
-        :key="index"
-        cols="12"
-        class="mb-3 pt-0"
-      >
-        <StatCard
-          :icon="stat.icon"
-          :label="stat.label"
-          :value="stat.value"
-          :color="stat.color"
-        />
-      </v-col>
-    </v-row>
+    <div
+      v-for="(stat, index) in stats"
+      :key="index"
+      cols="12"
+      class="mb-4 pt-0"
+    >
+      <StatCard
+        :icon="stat.icon"
+        :label="stat.label"
+        :value="stat.value"
+        :color="stat.color"
+      />
+    </div>
 
     <PaycheckSummaryCard :summary="summary" />
   </div>

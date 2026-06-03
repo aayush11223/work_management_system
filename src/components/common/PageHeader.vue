@@ -1,13 +1,13 @@
 <template>
-  <v-card fluid>
+  <v-card flat>
     <v-card-title class="d-flex align-center">
-      <div class="title">{{ title }}</div>
+      {{ title }}
       <v-spacer />
-      <slot name="actions" />
     </v-card-title>
     <v-card-subtitle>
       {{ subtitle }}
     </v-card-subtitle>
+    <v-divider> </v-divider>
   </v-card>
 </template>
 

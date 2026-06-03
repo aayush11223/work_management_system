@@ -7,7 +7,6 @@
       :loading="loading"
     >
       <template v-slot:item.actions="{ item }">
-        <!-- Wrap icon in tooltip -->
         <v-tooltip top>
           <template v-slot:activator="{ on, attrs }">
             <v-icon
