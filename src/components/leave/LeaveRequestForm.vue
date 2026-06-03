@@ -6,9 +6,14 @@
     persistent
   >
     <v-card>
-      <v-card-title>
-        <span class="headline">Request Leave</span>
-      </v-card-title>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn class="text-right" icon @click="$emit('close')">
+          <v-icon color="red">mdi-close</v-icon>
+        </v-btn>
+      </v-card-actions>
+
+      <v-card-title class="mb-2"> Request Leave </v-card-title>
 
       <v-card-text>
         <v-form ref="form" v-model="valid">

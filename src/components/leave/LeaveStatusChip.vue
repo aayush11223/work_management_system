@@ -18,13 +18,13 @@ export default {
 
       switch (currentStatus) {
         case "approved":
-          return "green";
+          return "green darken-1";
 
         case "pending":
-          return "amber";
+          return "yellow darken-3";
 
         case "rejected":
-          return "red";
+          return "red darken-1";
 
         default:
           return "grey";

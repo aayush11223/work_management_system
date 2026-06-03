@@ -6,9 +6,14 @@
     persistent
   >
     <v-card>
-      <v-card-title>
-        <span class="text-h5">Mark Attendance</span>
-      </v-card-title>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn class="text-right" icon @click="$emit('close')">
+          <v-icon color="red">mdi-close</v-icon>
+        </v-btn>
+      </v-card-actions>
+
+      <v-card-title class="mb-2"> Mark Attendance </v-card-title>
 
       <v-card-text>
         <v-row>
