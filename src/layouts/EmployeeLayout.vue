@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar color="deep-purple" dark flat>
+    <v-app-bar dark flat>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
       <v-toolbar-title>Work Management System</v-toolbar-title>
@@ -14,11 +14,12 @@
       </v-btn>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" absolute temporary>
+    <v-navigation-drawer dark v-model="drawer" absolute temporary>
       <v-list nav dense>
         <v-list-item-group
           v-model="group"
-          active-class="deep-purple--text text--accent-4"
+          active-class="grey darken-1
+--text text--accent-4"
         >
           <v-list-item
             v-for="(item, index) in menuItems"
