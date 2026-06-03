@@ -1,43 +1,17 @@
 <template >
   <div>
-    <AppBar :title="title" :name="name" />
-    <v-navigation-drawer v-model="drawer" dark absolute temporary>
-      <v-list nav dense>
-        <v-list-item-group
-          v-model="group"
-          active-class="grey darken-1--text text--accent-4"
-        >
-          <v-list-item
-            v-for="(item, index) in menuItems"
-            :key="index"
-            :to="item.route"
-          >
-            <!-- Makes :to, item behave like router link. -->
-
-            <v-list-item-icon>
-              <v-icon>
-                {{ item.icon }}
-              </v-icon>
-            </v-list-item-icon>
-
-            <v-list-item-title>
-              {{ item.title }}
-            </v-list-item-title>
-          </v-list-item>
-
-          <v-divider></v-divider>
-
-          <!-- logout part -->
-          <v-list-item to="/login" class="red--text">
-            <v-list-item-icon>
-              <v-icon class="red--text"> mdi-logout </v-icon>
-            </v-list-item-icon>
-
-            <v-list-item-title> Log Out </v-list-item-title>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-    </v-navigation-drawer>
+    <AppBar
+      :drawer="drawer"
+      @enable="enableDrawer"
+      :title="title"
+      :name="name"
+    />
+    <NavigationDrawer
+      :drawer="drawer"
+      :group="group"
+      :menuItems="menuItems"
+      @toggle="enableDrawer"
+    />
 
     <v-container>
       <v-card auto class="mt-10">
@@ -49,15 +23,22 @@
 
 <script>
 import AppBar from "@/components/common/AppBar.vue";
+import NavigationDrawer from "@/components/common/NavigationDrawer.vue";
 export default {
   components: {
     AppBar,
+    NavigationDrawer,
   },
 
   data() {
     return {
+      dialog: false,
+
+      //AppBar data
       title: "Work Management System",
       name: "Aayush Basnet",
+
+      //NavigationDrawer data
       drawer: false,
       group: null,
 
@@ -89,6 +70,12 @@ export default {
         },
       ],
     };
+  },
+
+  methods: {
+    enableDrawer(value) {
+      this.drawer = value;
+    },
   },
 };
 </script>

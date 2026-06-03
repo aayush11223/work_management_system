@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app-bar dark flat>
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="toggleNav"></v-app-bar-nav-icon>
 
       <v-toolbar-title>{{ title }}</v-toolbar-title>
 
@@ -19,11 +19,19 @@
 <script>
 export default {
   props: {
+    drawer: {
+      type: Boolean,
+    },
     title: {
       type: String,
     },
     name: {
       type: String,
+    },
+  },
+  methods: {
+    toggleNav() {
+      this.$emit("enable", !this.drawer);
     },
   },
 };
