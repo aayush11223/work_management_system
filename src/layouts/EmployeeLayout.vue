@@ -1,19 +1,6 @@
-<template>
+<template >
   <div>
-    <v-app-bar dark flat>
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-
-      <v-toolbar-title>Work Management System</v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-toolbar-title class="text-body-1"> Aayush Basnet </v-toolbar-title>
-
-      <v-btn class="ml-1" icon to="/profile">
-        <v-icon x-large> mdi-account-circle </v-icon>
-      </v-btn>
-    </v-app-bar>
-
+    <AppBar :title="title" :name="name" />
     <v-navigation-drawer v-model="drawer" dark absolute temporary>
       <v-list nav dense>
         <v-list-item-group
@@ -61,9 +48,16 @@
 </template>
 
 <script>
+import AppBar from "@/components/common/AppBar.vue";
 export default {
+  components: {
+    AppBar,
+  },
+
   data() {
     return {
+      title: "Work Management System",
+      name: "Aayush Basnet",
       drawer: false,
       group: null,
 
