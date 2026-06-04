@@ -1,13 +1,11 @@
 <template>
   <!-- Page Header with Apply Leave button -->
   <div>
-    <PageHeader title="My Leave Requests" />
-
-    <div class="d-flex justify-end">
-      <v-btn class="my-3 mr-2" color="primary" @click="showDialog = true">
-        Apply Leave
-      </v-btn>
-    </div>
+    <PageHeader
+      title="My Leave Requests"
+      btnName="APPLY LEAVE"
+      @doAction="showDialog = true"
+    />
 
     <LeaveRequestTable :items="leaves" :loading="false" :showActions="false" />
 

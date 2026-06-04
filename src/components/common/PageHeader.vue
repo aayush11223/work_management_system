@@ -1,15 +1,24 @@
 <template>
   <v-card flat>
-    <v-card-title class="d-flex align-center">
-      {{ title }}
-      <v-spacer />
-    </v-card-title>
-    <v-card-subtitle>
-      {{ subtitle }}
-    </v-card-subtitle>
-    <v-divider> </v-divider>
+    <div class="d-flex align-center justify-space-between">
+      <div>
+        <v-card-title class="pl-4">
+          {{ title }}
+        </v-card-title>
+        <v-card-subtitle class="pl-4">
+          {{ subtitle }}
+        </v-card-subtitle>
+      </div>
+
+      <v-btn depressed color="primary" class="ma-4" @click="$emit('doAction')">
+        {{ btnName }}
+      </v-btn>
+    </div>
+
+    <v-divider></v-divider>
   </v-card>
 </template>
+
 
 <script>
 export default {
@@ -17,6 +26,9 @@ export default {
     title: {
       type: String,
       required: true,
+    },
+    btnName: {
+      type: String,
     },
     subtitle: {
       type: String,

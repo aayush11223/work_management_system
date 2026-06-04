@@ -1,12 +1,10 @@
 <template>
   <div>
-    <PageHeader title="My Work Logs" />
-
-    <div class="d-flex justify-end">
-      <v-btn class="my-3 mr-2" color="primary" @click="showDialog = true">
-        Log Work
-      </v-btn>
-    </div>
+    <PageHeader
+      title="My Work Logs"
+      btnName="LOG WORK"
+      @doAction="showDialog = true"
+    />
 
     <WorkLogTable :items="logs" :loading="loading" />
 

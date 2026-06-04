@@ -1,6 +1,11 @@
 <template>
   <div>
-    <PageHeader title="My Work Summary" />
+    <v-card flat>
+      <v-card-title class="pl-4">
+        {{ title }}
+      </v-card-title>
+      <v-divider></v-divider>
+    </v-card>
 
     <MonthPicker
       class="mt-3"
@@ -30,14 +35,12 @@
 </template>
 
 <script>
-import PageHeader from "@/components/common/PageHeader.vue";
 import PaycheckSummaryCard from "@/components/paycheck/PaycheckSummaryCard.vue";
 import StatCard from "@/components/common/StatCard.vue";
 import MonthPicker from "@/components/paycheck/MonthPicker.vue";
 
 export default {
   components: {
-    PageHeader,
     PaycheckSummaryCard,
     StatCard,
     MonthPicker,
@@ -45,6 +48,7 @@ export default {
 
   data() {
     return {
+      title: "My Work Summary",
       selectedMonth: new Date().getMonth() + 1,
       selectedYear: new Date().getFullYear(),
 

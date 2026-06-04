@@ -13,7 +13,7 @@
       @toggle="enableDrawer"
     />
 
-    <v-main>
+    <v-main class="mt-5">
       <v-container>
         <v-card auto>
           <router-view />

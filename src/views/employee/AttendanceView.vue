@@ -1,16 +1,11 @@
 <template>
   <div>
-    <PageHeader :title="title" />
-    <div class="d-flex justify-end">
-      <v-btn
-        depressed
-        color="primary"
-        class="my-3 mr-2"
-        @click="showDialog = true"
-      >
-        Mark Attendance
-      </v-btn>
-    </div>
+    <PageHeader
+      :title="title"
+      :btnName="btnName"
+      @doAction="showDialog = true"
+    />
+
     <AttendanceTable :headers="headers" :items="items" />
 
     <MarkAttendanceForm
@@ -36,6 +31,7 @@ export default {
   data() {
     return {
       title: "My Attendance",
+      btnName: "MARK ATTENDANCE",
       showDialog: false,
       headers: [
         { text: "Date", value: "date" },

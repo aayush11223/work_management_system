@@ -1,8 +1,12 @@
 <template>
   <div>
-    <PageHeader :title="title" />
+    <v-card flat>
+      <v-card-title class="pl-4">
+        {{ title }}
+      </v-card-title>
+      <v-divider></v-divider>
+    </v-card>
 
-    <!-- Top KPI Ribbon: Adjusted column widths to fit horizontally on desktop -->
     <v-row class="mt-2">
       <v-col
         v-for="(stat, index) in stats"
@@ -20,9 +24,7 @@
       </v-col>
     </v-row>
 
-    <!-- New Dashboard-Specific Operational Section -->
     <v-row class="mt-4">
-      <!-- Main Activity / Tracking Column -->
       <v-col cols="12" md="8">
         <v-card outlined class="pa-4" min-height="300">
           <v-card-title class="text-h6 font-weight-bold pa-0 mb-4">
@@ -69,7 +71,6 @@
         </v-card>
       </v-col>
 
-      <!-- Sidebar Quick Actions / Context Column -->
       <v-col cols="12" md="4">
         <v-card outlined class="pa-4" min-height="300">
           <v-card-title class="text-h6 font-weight-bold pa-0 mb-4">
@@ -104,15 +105,11 @@
 </template>
 
 <script>
-import PageHeader from "@/components/common/PageHeader.vue";
 import StatCard from "@/components/common/StatCard.vue";
 
 export default {
-  name: "DashboardView",
-
   components: {
     StatCard,
-    PageHeader,
   },
 
   computed: {
