@@ -6,7 +6,7 @@
       @doAction="showDialog = true"
     />
 
-    <WorkLogTable :items="logs" :loading="loading" />
+    <TaBle :headers="headers" :items="logs" :loading="loading" />
 
     <WorkLogForm
       :visible="showDialog"
@@ -18,22 +18,26 @@
 
 <script>
 import PageHeader from "@/components/common/PageHeader.vue";
-import WorkLogTable from "@/components/worklog/WorkLogTable.vue";
+import TaBle from "@/components/common/TaBle.vue";
 import WorkLogForm from "@/components/worklog/WorkLogForm.vue";
 
 export default {
-  name: "WorkLogView",
-
   components: {
     PageHeader,
-    WorkLogTable,
+    TaBle,
     WorkLogForm,
   },
 
   data() {
     return {
-      loading: false,
+      headers: [
+        { text: "Date", value: "date", align: "start" },
+        { text: "Description", value: "description" },
+        { text: "Units", value: "units" },
+        { text: "Hours", value: "hours" },
+      ],
 
+      loading: false,
       showDialog: false,
 
       logs: [
