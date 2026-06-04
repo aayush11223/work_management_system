@@ -67,12 +67,6 @@ export default {
           icon: "mdi-account-clock",
           color: "info",
         },
-        {
-          label: "Total Units",
-          value: 145,
-          icon: "mdi-file-document-check",
-          color: "primary",
-        },
       ],
 
       summary: {

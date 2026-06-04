@@ -1,13 +1,15 @@
 <template>
   <div>
     <PageHeader :title="title" />
-    <v-row>
+
+    <!-- Top KPI Ribbon: Adjusted column widths to fit horizontally on desktop -->
+    <v-row class="mt-2">
       <v-col
         v-for="(stat, index) in stats"
         :key="index"
         cols="12"
         sm="6"
-        class="mt-2"
+        md="3"
       >
         <StatCard
           :icon="stat.icon"
@@ -15,6 +17,87 @@
           :value="stat.value"
           :color="stat.color"
         />
+      </v-col>
+    </v-row>
+
+    <!-- New Dashboard-Specific Operational Section -->
+    <v-row class="mt-4">
+      <!-- Main Activity / Tracking Column -->
+      <v-col cols="12" md="8">
+        <v-card outlined class="pa-4" min-height="300">
+          <v-card-title class="text-h6 font-weight-bold pa-0 mb-4">
+            Recent Work Logs & Activity
+          </v-card-title>
+
+          <v-list two-line class="pa-0">
+            <v-list-item class="px-0">
+              <v-list-item-avatar color="primary lighten-5">
+                <v-icon color="primary">mdi-file-document-edit</v-icon>
+              </v-list-item-avatar>
+              <v-list-item-content>
+                <v-list-item-title class="font-weight-medium"
+                  >Task #4102 - Frontend Integration</v-list-item-title
+                >
+                <v-list-item-subtitle
+                  >Submitted 2 hours ago • 4.5 hours
+                  logged</v-list-item-subtitle
+                >
+              </v-list-item-content>
+              <v-list-item-action>
+                <v-chip small color="success" label>Approved</v-chip>
+              </v-list-item-action>
+            </v-list-item>
+            <v-divider></v-divider>
+
+            <v-list-item class="px-0">
+              <v-list-item-avatar color="warning lighten-5">
+                <v-icon color="warning">mdi-clock-outline</v-icon>
+              </v-list-item-avatar>
+              <v-list-item-content>
+                <v-list-item-title class="font-weight-medium"
+                  >Task #4098 - Bug Fixing</v-list-item-title
+                >
+                <v-list-item-subtitle
+                  >Submitted yesterday • 3 hours logged</v-list-item-subtitle
+                >
+              </v-list-item-content>
+              <v-list-item-action>
+                <v-chip small color="warning" label>Pending</v-chip>
+              </v-list-item-action>
+            </v-list-item>
+          </v-list>
+        </v-card>
+      </v-col>
+
+      <!-- Sidebar Quick Actions / Context Column -->
+      <v-col cols="12" md="4">
+        <v-card outlined class="pa-4" min-height="300">
+          <v-card-title class="text-h6 font-weight-bold pa-0 mb-4">
+            Quick Actions
+          </v-card-title>
+
+          <v-btn block color="primary" class="mb-3" to="/attendance" large>
+            <v-icon left>mdi-calendar-check</v-icon>
+            Clock In / Out
+          </v-btn>
+
+          <v-btn
+            block
+            color="secondary"
+            class="mb-3"
+            to="/worklog"
+            large
+            outlined
+          >
+            <v-icon left>mdi-plus</v-icon>
+            Log Daily Work
+          </v-btn>
+
+          <v-btn block color="error" to="/leave" large outlined>
+            <v-icon left>mdi-briefcase-remove</v-icon>
+            Request Leave
+          </v-btn>
+        </v-card>
       </v-col>
     </v-row>
   </div>
@@ -34,7 +117,7 @@ export default {
 
   computed: {
     isAdmin() {
-      return this.$route.name === "admin-dashboard"; // matches name in router.js
+      return this.$route.name === "admin-dashboard";
     },
 
     title() {
