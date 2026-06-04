@@ -1,13 +1,15 @@
 <template>
   <v-dialog :value="visible" persistent max-width="600px">
     <v-card>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn class="text-right" icon @click="$emit('close')">
-          <v-icon color="red">mdi-close</v-icon>
-        </v-btn>
-      </v-card-actions>
-      <v-card-title class="mb-2"> Log Work </v-card-title>
+      <div class="d-flex justify-space-between">
+        <v-card-title class="mb-2"> Log Work </v-card-title>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn class="text-right" icon @click="$emit('close')">
+            <v-icon color="red">mdi-close</v-icon>
+          </v-btn>
+        </v-card-actions>
+      </div>
       <v-card-text>
         <v-form ref="form" v-model="valid">
           <v-text-field
