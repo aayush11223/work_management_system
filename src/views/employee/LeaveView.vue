@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import PageHeader from "@/components/common/PageHeader.vue";
+import PageHeader from "@/components/common/PageBtn.vue";
 import LeaveRequestTable from "@/components/leave/LeaveRequestTable.vue";
 import LeaveRequestForm from "@/components/leave/LeaveRequestForm.vue";
 
