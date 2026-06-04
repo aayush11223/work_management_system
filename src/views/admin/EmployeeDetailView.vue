@@ -1,11 +1,19 @@
 <template>
   <div>
-    <PageHeader title="Aayush Basnet" subtitle="Development" />
+    <v-card flat>
+      <v-card-title class="pl-4">
+        {{ title }}
+      </v-card-title>
+      <v-card-subtitle class="pl-4">
+        {{ subtitle }}
+      </v-card-subtitle>
+
+      <v-divider></v-divider>
+    </v-card>
   </div>
 </template>
 
 <script>
-import PageHeader from "@/components/common/PageHeader.vue";
 export default {
   data() {
     return {
@@ -19,9 +27,7 @@ export default {
     };
   },
 
-  components: {
-    PageHeader,
-  },
+  components: {},
 };
 </script>
 

@@ -1,11 +1,6 @@
 <template>
   <div>
-    <v-card flat>
-      <v-card-title class="pl-4">
-        {{ title }}
-      </v-card-title>
-      <v-divider></v-divider>
-    </v-card>
+    <PageHeader :title="title" />
 
     <v-row class="mt-2">
       <v-col
@@ -105,11 +100,13 @@
 </template>
 
 <script>
+import PageHeader from "@/components/common/PageHeader.vue";
 import StatCard from "@/components/common/StatCard.vue";
 
 export default {
   components: {
     StatCard,
+    PageHeader,
   },
 
   computed: {
