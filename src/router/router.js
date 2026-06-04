@@ -5,6 +5,7 @@ import AuthLayout from "@/layouts/AuthLayout.vue";
 import EmployeeLayout from "@/layouts/EmployeeLayout.vue";
 import AdminLayout from "@/layouts/AdminLayout.vue"
 
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -106,14 +107,17 @@ const routes = [
             {
                 path: 'reports',
                 component: () => import("@/views/admin/ReportsView.vue")
-            }
+            },
+            //Employee Details based on id
+            {
+                path: 'employees/:id',   // Vue handles the /admin/ prefix automatically
+                name: 'employee-detail',
+                component: () => import("@/views/admin/EmployeeDetailView.vue")
+            },
         ]
     },
 
-    //Employee Details based on id
-    {
-        path: 'admin/employees/:id'
-    }
+
 
 ];
 
