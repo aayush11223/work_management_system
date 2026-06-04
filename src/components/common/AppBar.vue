@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar dark flat>
+    <v-app-bar app dark flat>
       <v-app-bar-nav-icon @click="toggleNav"></v-app-bar-nav-icon>
 
       <v-toolbar-title>{{ title }}</v-toolbar-title>

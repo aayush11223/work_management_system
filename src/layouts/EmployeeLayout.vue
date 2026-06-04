@@ -1,5 +1,5 @@
 <template >
-  <div>
+  <v-app>
     <AppBar
       :drawer="drawer"
       @enable="enableDrawer"
@@ -13,12 +13,14 @@
       @toggle="enableDrawer"
     />
 
-    <v-container>
-      <v-card auto class="mt-10">
-        <v-main> <router-view /> </v-main>
-      </v-card>
-    </v-container>
-  </div>
+    <v-main>
+      <v-container>
+        <v-card auto>
+          <router-view />
+        </v-card>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
@@ -32,8 +34,6 @@ export default {
 
   data() {
     return {
-      dialog: false,
-
       //AppBar data
       title: "Work Management System",
       name: "Aayush Basnet",

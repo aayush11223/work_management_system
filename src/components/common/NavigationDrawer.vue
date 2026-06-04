@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-navigation-drawer v-model="drawerValue" dark absolute temporary>
+    <v-navigation-drawer v-model="drawerValue" app dark>
       <v-list nav dense>
         <v-list-item-group active-class="grey darken-1--text text--accent-4">
           <v-list-item
