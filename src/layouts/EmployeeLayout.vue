@@ -39,7 +39,7 @@ export default {
       name: "Aayush Basnet",
 
       //NavigationDrawer data
-      drawer: false,
+      drawer: true,
       group: null,
 
       menuItems: [
