@@ -1,4 +1,4 @@
-<template >
+<template>
   <v-app>
     <AppBar
       :drawer="drawer"
@@ -13,9 +13,10 @@
       @toggle="enableDrawer"
     />
 
-    <v-main class="mt-5">
-      <v-container>
-        <v-card auto>
+    <!-- Vuetify automatically injects the correct padding-left here when drawer is open -->
+    <v-main>
+      <v-container fluid class="mt-5">
+        <v-card>
           <router-view />
         </v-card>
       </v-container>
@@ -26,28 +27,20 @@
 <script>
 import AppBar from "@/components/common/AppBar.vue";
 import NavigationDrawer from "@/components/common/NavigationDrawer.vue";
+
 export default {
   components: {
     AppBar,
     NavigationDrawer,
   },
-
   data() {
     return {
-      //AppBar data
       title: "Work Management System",
       name: "Aayush Basnet",
-
-      //NavigationDrawer data
       drawer: true,
       group: null,
-
       menuItems: [
-        {
-          title: "Dashboard",
-          icon: "mdi-view-dashboard",
-          route: "/dashboard",
-        },
+        { title: "Dashboard", icon: "mdi-view-dashboard", route: "/dashboard" },
         {
           title: "Attendance",
           icon: "mdi-calendar-account",
@@ -58,20 +51,11 @@ export default {
           icon: "mdi-briefcase-account-outline",
           route: "/leave",
         },
-        {
-          title: "Work Log",
-          icon: "mdi-clock",
-          route: "/worklog",
-        },
-        {
-          title: "Summary",
-          icon: "mdi-poll",
-          route: "/summary",
-        },
+        { title: "Work Log", icon: "mdi-clock", route: "/worklog" },
+        { title: "Summary", icon: "mdi-poll", route: "/summary" },
       ],
     };
   },
-
   methods: {
     enableDrawer(value) {
       this.drawer = value;
