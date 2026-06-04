@@ -6,7 +6,7 @@
       @doAction="showDialog = true"
     />
 
-    <AttendanceTable :headers="headers" :items="items" />
+    <TaBle :headers="headers" :items="items" />
 
     <MarkAttendanceForm
       :visible="showDialog"
@@ -18,14 +18,14 @@
 
 <script>
 import PageHeader from "@/components/common/PageHeader.vue";
-import AttendanceTable from "@/components/attendance/AttendanceTable.vue";
+import TaBle from "@/components/common/TaBle.vue";
 import MarkAttendanceForm from "@/components/attendance/MarkAttendanceForm.vue";
 
 export default {
   name: "AttendanceView",
   components: {
     PageHeader,
-    AttendanceTable,
+    TaBle,
     MarkAttendanceForm,
   },
   data() {
