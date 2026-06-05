@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- User Info Card -->
-    <v-card class="pa-4 mb-4" flat>
+    <v-card class="mb-4" flat>
       <v-card-title>Profile Information</v-card-title>
 
       <v-simple-table>
@@ -36,10 +36,10 @@
     <v-divider> </v-divider>
 
     <!-- Password Card -->
-    <v-card class="pa-4" flat>
+    <v-card class="pt-4" flat>
       <v-card-title>Change Password</v-card-title>
 
-      <v-form ref="form">
+      <v-form ref="form" class="pl-4">
         <v-text-field
           v-model="passwordForm.currentPassword"
           label="Current Password"
@@ -61,7 +61,9 @@
           :rules="[rules.required, rules.passwordMatch]"
         />
 
-        <v-btn color="primary" @click="changePassword"> Change Password </v-btn>
+        <v-btn class="mb-8" color="primary" @click="changePassword">
+          Change Password
+        </v-btn>
       </v-form>
     </v-card>
 
