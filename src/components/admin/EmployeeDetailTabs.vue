@@ -20,7 +20,13 @@
       <!-- Leaves Placeholder -->
       <v-tab-item>
         <v-card flat>
-          <v-card-text> Leaves Placeholder </v-card-text>
+          <v-card-text>
+            <TaBle
+              :headers="leaveHeaders"
+              :items="leaveRecords"
+              :showActions="false"
+            />
+          </v-card-text>
         </v-card>
       </v-tab-item>
 
@@ -84,6 +90,32 @@ export default {
           CheckIn: "08:50 AM",
           CheckOut: "05:00 PM",
           Status: "Present",
+        },
+      ],
+      leaveHeaders: [
+        { text: "Leave Type", value: "leaveType" },
+        { text: "Start Date", value: "startDate" },
+        { text: "End Date", value: "endDate" },
+        { text: "Status", value: "status" },
+      ],
+      leaveRecords: [
+        {
+          leaveType: "Sick Leave",
+          startDate: "2026-01-10",
+          endDate: "2026-01-12",
+          status: "Approved",
+        },
+        {
+          leaveType: "Annual Leave",
+          startDate: "2026-03-15",
+          endDate: "2026-03-20",
+          status: "Approved",
+        },
+        {
+          leaveType: "Unpaid Leave",
+          startDate: "2026-05-02",
+          endDate: "2026-05-02",
+          status: "Pending",
         },
       ],
     };
