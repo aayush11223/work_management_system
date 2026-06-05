@@ -36,7 +36,6 @@ export default {
   data() {
     return {
       title: "Work Management System",
-      name: "Aayush Basnet",
       drawer: true,
       group: null,
       menuItems: [

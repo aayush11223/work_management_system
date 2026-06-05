@@ -1,16 +1,28 @@
 <template>
   <v-app-bar app dark flat>
     <v-app-bar-nav-icon @click="toggleNav"></v-app-bar-nav-icon>
-
     <v-toolbar-title>{{ title }}</v-toolbar-title>
-
     <v-spacer></v-spacer>
 
-    <v-toolbar-title class="text-body-1"> {{ name }}</v-toolbar-title>
+    <!-- v-menu -->
+    <v-menu transition="slide-y-transition" bottom>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn class="mr-1" dark icon v-bind="attrs" v-on="on">
+          <v-icon x-large> mdi-account-circle </v-icon>
+        </v-btn>
+      </template>
 
-    <v-btn class="ml-1" icon to="/profile">
-      <v-icon x-large> mdi-account-circle </v-icon>
-    </v-btn>
+      <v-list>
+        <v-list-item to="/profile">
+          <v-list-item-title>Profile</v-list-item-title>
+        </v-list-item>
+
+        <!-- Dynamic Toggle Route -->
+        <v-list-item @click="handleToggle">
+          <v-list-item-title>{{ toggleTitle }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
   </v-app-bar>
 </template>
 
@@ -23,13 +35,28 @@ export default {
     title: {
       type: String,
     },
-    name: {
-      type: String,
+  },
+
+  computed: {
+    isProfilePage() {
+      return this.$route.path === "/profile";
+    },
+    toggleTitle() {
+      return this.isProfilePage ? "Go to Admin" : "Go to User";
     },
   },
+
   methods: {
     toggleNav() {
       this.$emit("enable", !this.drawer);
+    },
+
+    handleToggle() {
+      if (this.isProfilePage) {
+        this.$router.push("/admin/dashboard");
+      } else {
+        this.$router.push("/profile");
+      }
     },
   },
 };

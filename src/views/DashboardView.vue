@@ -31,7 +31,8 @@
               <v-list-item-avatar color="primary lighten-5">
                 <v-icon color="primary">mdi-file-document-edit</v-icon>
               </v-list-item-avatar>
-              <v-list-item-content>
+              <v-list-item-content
+                >title: "Aayush Basnet" },
                 <v-list-item-title class="font-weight-medium"
                   >Task #4102 - Frontend Integration</v-list-item-title
                 >
