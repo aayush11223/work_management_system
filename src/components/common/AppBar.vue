@@ -38,11 +38,11 @@ export default {
   },
 
   computed: {
-    isProfilePage() {
-      return this.$route.path === "/profile";
+    isUser() {
+      return this.$route.path === "/dashboard";
     },
     toggleTitle() {
-      return this.isProfilePage ? "Go to Admin" : "Go to User";
+      return this.isUser ? "Go to Admin" : "Go to User";
     },
   },
 
@@ -52,10 +52,10 @@ export default {
     },
 
     handleToggle() {
-      if (this.isProfilePage) {
+      if (this.isUser) {
         this.$router.push("/admin/dashboard");
       } else {
-        this.$router.push("/profile");
+        this.$router.push("/dashboard");
       }
     },
   },
