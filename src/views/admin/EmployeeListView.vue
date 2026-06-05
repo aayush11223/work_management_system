@@ -39,6 +39,7 @@ export default {
           department: "Development",
           role: "Front End Developer",
           salary: 30000,
+          phone: "+977 9000000000",
         },
         {
           id: 102,
@@ -47,6 +48,7 @@ export default {
           department: "Development",
           role: "Back End Developer",
           salary: 35000,
+          phone: "+977 9111111111",
         },
         {
           id: 103,
@@ -55,6 +57,7 @@ export default {
           department: "Design",
           role: "UI/UX Designer",
           salary: 28000,
+          phone: "+977 9222222222",
         },
         {
           id: 104,
@@ -63,6 +66,7 @@ export default {
           department: "Quality Assurance",
           role: "QA Engineer",
           salary: 25000,
+          phone: "+977 9333333333",
         },
         {
           id: 105,
@@ -71,6 +75,7 @@ export default {
           department: "Management",
           role: "Project Manager",
           salary: 45000,
+          phone: "+977 9444444444",
         },
       ],
     };

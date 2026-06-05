@@ -1,31 +1,54 @@
 <template>
-  <div></div>
+  <div>
+    <v-tabs v-model="activeTab" class="rounded-sm" dark center-active>
+      <v-tab>Attendance</v-tab>
+      <v-tab>Leaves</v-tab>
+      <v-tab>Work Logs</v-tab>
+      <v-tab>Paycheck</v-tab>
+    </v-tabs>
+
+    <v-tabs-items v-model="activeTab">
+      <v-tab-item>
+        <v-card flat>
+          <v-card-text> Attendance Placeholder </v-card-text>
+        </v-card>
+      </v-tab-item>
+
+      <v-tab-item>
+        <v-card flat>
+          <v-card-text> Leaves Placeholder </v-card-text>
+        </v-card>
+      </v-tab-item>
+
+      <v-tab-item>
+        <v-card flat>
+          <v-card-text> Work Logs Placeholder </v-card-text>
+        </v-card>
+      </v-tab-item>
+
+      <v-tab-item>
+        <v-card flat>
+          <v-card-text> Paycheck Placeholder </v-card-text>
+        </v-card>
+      </v-tab-item>
+    </v-tabs-items>
+  </div>
 </template>
 
 <script>
 export default {
+  name: "EmployeeDetailTabs",
+  data() {
+    return {
+      activeTab: null,
+    };
+  },
   props: {
     employeeId: {
       type: [String, Number],
+      required: true,
     },
   },
-
-  // Build it and import it into EmployeeDetailView straight away:
-  // Component needs:
-
-  // Props: employeeId (String or Number)
-  // Use v-tabs and v-tab for four tabs: Attendance, Leaves, Work Logs, Paycheck
-  // Use v-tabs-items and v-tab-item for each tab panel
-  // For now each tab panel just shows a placeholder <p> with the tab name — you will fill content next
-  // One data() value: activeTab bound to v-tabs with v-model
-
-  // In EmployeeDetailView immediately after building:
-
-  // Import EmployeeDetailTabs
-  // Pass employee.id as employeeId prop
-  // Run it and confirm tabs render and switch correctly
-
-  // What to google: vuetify 2 v-tabs v-tabs-items, vuetify 2 tabs example
 };
 </script>
 
