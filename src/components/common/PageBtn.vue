@@ -10,7 +10,13 @@
         </v-card-subtitle>
       </div>
 
-      <v-btn depressed color="primary" class="ma-4" @click="$emit('doAction')">
+      <v-btn
+        small
+        depressed
+        color="primary"
+        class="ma-4"
+        @click="$emit('doAction')"
+      >
         {{ btnName }}
       </v-btn>
     </div>

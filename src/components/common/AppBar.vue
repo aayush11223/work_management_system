@@ -17,9 +17,17 @@
           <v-list-item-title>Profile</v-list-item-title>
         </v-list-item>
 
+        <v-divider></v-divider>
+
         <!-- Dynamic Toggle Route -->
         <v-list-item @click="handleToggle">
           <v-list-item-title>{{ toggleTitle }}</v-list-item-title>
+        </v-list-item>
+        <v-divider></v-divider>
+
+        <!-- Logout -->
+        <v-list-item to="/login">
+          <v-list-item-title class="red--text">Logout</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>

@@ -12,21 +12,6 @@
     </template>
 
     <!-- Actions column with Approve and Reject buttons -->
-    <template v-slot:item.actions="{ item }">
-      <div v-if="showActions">
-        <v-btn
-          color="success"
-          small
-          class="mr-2"
-          @click="$emit('approve', item.id)"
-        >
-          Approve
-        </v-btn>
-        <v-btn color="error" small @click="$emit('reject', item.id)">
-          Reject
-        </v-btn>
-      </div>
-    </template>
   </v-data-table>
 </template>
 

@@ -13,17 +13,6 @@
 
           <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item>
-
-        <v-divider></v-divider>
-
-        <!-- logout part -->
-        <v-list-item to="/login" class="red--text">
-          <v-list-item-icon>
-            <v-icon class="red--text"> mdi-logout </v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-title> Log Out </v-list-item-title>
-        </v-list-item>
       </v-list-item-group>
     </v-list>
   </v-navigation-drawer>

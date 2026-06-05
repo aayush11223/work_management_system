@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chip :color="chipColor">{{ status }} </v-chip>
+    <v-chip small :color="chipColor">{{ status }} </v-chip>
   </div>
 </template>
 
@@ -18,13 +18,13 @@ export default {
 
       switch (currentStatus) {
         case "approved":
-          return "green darken-1";
+          return "success";
 
         case "pending":
-          return "yellow darken-3";
+          return "warning";
 
         case "rejected":
-          return "red darken-1";
+          return "error";
 
         default:
           return "grey";
