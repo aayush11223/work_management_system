@@ -14,7 +14,7 @@
     />
 
     <v-main class="mt-5">
-      <v-container>
+      <v-container fluid>
         <v-card auto>
           <router-view />
         </v-card>
