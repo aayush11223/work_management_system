@@ -2,7 +2,6 @@
   <div>
     <PageHeader title="Employees Leave" />
 
-    <!-- Filter Section -->
     <v-row class="mb-4">
       <v-col cols="12" sm="4">
         <v-select
@@ -16,7 +15,6 @@
       </v-col>
     </v-row>
 
-    <!-- Leave Table -->
     <LeaveRequestTable
       :items="filteredLeaves"
       :loading="false"
@@ -85,8 +83,35 @@ export default {
       ],
     };
   },
+  computed: {
+    // This computed property watches `selectedStatus`. Whenever the user changes the dropdown filter, this function automatically runs,
+    filteredLeaves() {
+      // If filter is set to All, return the full list unfiltered
+      if (this.selectedStatus === "All") {
+        return this.leaves;
+      }
+      // Compare lowercase values to avoid mismatching "Pending" with "pending"
+      return this.leaves.filter(
+        (leave) => leave.status === this.selectedStatus.toLowerCase()
+      );
+    },
+  },
+  methods: {
+    handleApprove(leaveItem) {
+      // JS Array find locates the specific object reference inside our array
+      const record = this.leaves.find((item) => item.id === leaveItem.id);
+      if (record) {
+        record.status = "approved";
+      }
+    },
+    handleReject(leaveItem) {
+      const record = this.leaves.find((item) => item.id === leaveItem.id);
+      if (record) {
+        record.status = "rejected";
+      }
+    },
+  },
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

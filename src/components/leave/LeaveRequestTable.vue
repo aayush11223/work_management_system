@@ -5,13 +5,27 @@
     :loading="loading"
     class="elevation-1"
   >
-    <!-- Status column with LeaveStatusChip -->
-    <template v-slot:item.status="{ item }">
-      <!-- v-slot is used to customize a v-data-table slots and in our case, we use it to render colorful chips in v-data-table-->
+    <template v-slot:[`item.status`]="{ item }">
       <LeaveStatusChip :status="item.status" />
     </template>
 
-    <!-- Actions column with Approve and Reject buttons -->
+    <template v-slot:[`item.actions`]="{ item }">
+      <div v-if="item.status === 'pending'">
+        <v-btn
+          depressed
+          small
+          color="success"
+          class="mr-2"
+          @click="$emit('approve', item)"
+        >
+          Approve
+        </v-btn>
+        <v-btn depressed small color="error" @click="$emit('reject', item)">
+          Reject
+        </v-btn>
+      </div>
+      <span v-else class="text-caption grey--text">Processed</span>
+    </template>
   </v-data-table>
 </template>
 
@@ -20,11 +34,9 @@ import LeaveStatusChip from "./LeaveStatusChip.vue";
 
 export default {
   name: "LeaveRequestTable",
-
   components: {
     LeaveStatusChip,
   },
-
   props: {
     items: {
       type: Array,
@@ -38,7 +50,6 @@ export default {
       default: false,
     },
   },
-
   computed: {
     headers() {
       const headerTitle = [
@@ -53,6 +64,7 @@ export default {
         headerTitle.push({
           text: "Actions",
           value: "actions",
+          sortable: false,
         });
       }
 
@@ -62,5 +74,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
