@@ -1,88 +1,95 @@
 <template>
-  <v-dialog max-width="500px" persistent>
+  <v-dialog :value="visible" @click:outside="closeForm" max-width="500px">
     <v-card>
-      <v-card-title>
-        <span class="text-h5">Edit Attendance</span>
-      </v-card-title>
+      <div class="d-flex justify-space-between align-center">
+        <v-card-title> Edit Attendance </v-card-title>
+        <v-card-actions>
+          <v-spacer></v-spacer>
 
-      <v-card-text>
-        <v-form>
-          <v-text-field
-            label="Date"
-            v-model="localRecord.date"
-            readonly
-          ></v-text-field>
+          <v-btn class="text-right" icon @click="$emit('closeForm')">
+            <v-icon color="red">mdi-close</v-icon>
+          </v-btn>
+        </v-card-actions>
+      </div>
 
-          <v-text-field
-            label="Check In Time"
-            v-model="localRecord.checkIn"
-          ></v-text-field>
+      <v-card-text class="pt-4">
+        <v-row>
+          <v-col cols="12">
+            <v-text-field
+              v-model="localRecord.date"
+              label="Date"
+              readonly
+            ></v-text-field>
+          </v-col>
 
-          <v-text-field
-            label="Check Out Time"
-            v-model="localRecord.checkOut"
-          ></v-text-field>
+          <v-col cols="12" sm="6">
+            <v-text-field
+              v-model="localRecord.checkIn"
+              label="Check In Time"
+              type="time"
+            ></v-text-field>
+          </v-col>
 
-          <v-select
-            label="Status"
-            v-model="localRecord.status"
-            :items="['Present', 'Absent', 'Late']"
-          ></v-select>
-          Task 29 — Build EditAttendanceForm then wire it (45 mins)
-          <!-- File: src/components/attendance/EditAttendanceForm.vue
-Build it:
+          <v-col cols="12" sm="6">
+            <v-text-field
+              v-model="localRecord.checkOut"
+              label="Check Out Time"
+              type="time"
+            ></v-text-field>
+          </v-col>
 
-Props: visible (Boolean), record (Object)
-Use v-dialog
-Fields pre-filled from record prop: date (read only), check in time, check out time, status dropdown
-Status dropdown options: Present, Absent, Late
-Cancel emits close
-Save emits save with updated record data
-
-Then immediately in src/views/admin/AttendanceView.vue:
-
-Build the page with PageHeader, hardcoded records array, and AttendanceTable with showEdit prop set to true
-Import EditAttendanceForm and wire it up
-When AttendanceTable emits edit, set selectedRecord and open the dialog
-When dialog emits save, find the record in the array and update it
-Run it and confirm edit flow works end to end
-
-What to google: javascript array findIndex, vue update object in array reactivity -->
-        </v-form>
+          <v-col cols="12">
+            <v-select
+              v-model="localRecord.status"
+              :items="statusOptions"
+              label="Status"
+            ></v-select>
+          </v-col>
+        </v-row>
       </v-card-text>
+
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn color="red darken-1" text @click="closeForm">Cancel</v-btn>
+        <v-btn color="blue darken-1" text @click="saveForm">Save</v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
 
 <script>
 export default {
-  name: "EditAttendanceForm",
   props: {
     visible: {
       type: Boolean,
+      default: false,
     },
     record: {
       type: Object,
+      default: () => ({}),
     },
   },
   data() {
     return {
-      localRecord: {
-        date: "",
-        checkIn: "",
-        checkOut: "",
-        status: "",
-      },
+      localRecord: {},
+      statusOptions: ["Present", "Absent", "Late"],
     };
   },
-
+  watch: {
+    // Clone prop data when form opens to avoid direct mutations
+    visible(newVal) {
+      if (newVal && this.record) {
+        this.localRecord = { ...this.record };
+      }
+    },
+  },
   methods: {
-    handleCancel() {
+    closeForm() {
       this.$emit("close");
+    },
+    saveForm() {
+      this.$emit("save", this.localRecord);
     },
   },
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

@@ -70,10 +70,19 @@ export default {
       this.selectedRecord = record;
       this.showDialog = true;
     },
-    handleSave() {
+    handleSave(updatedRecord) {
+      // Find index of the record that matches the modified id
+      const index = this.records.findIndex((r) => r.id === updatedRecord.id);
+
+      if (index !== -1) {
+        // Vue 2 reactive array replacement
+        this.$set(this.records, index, updatedRecord);
+      }
+
       this.showDialog = false;
     },
   },
 };
 </script>
+
 <style lang="scss" scoped></style>

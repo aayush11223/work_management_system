@@ -1,12 +1,17 @@
 <template>
   <div>
     <v-data-table
-      :headers="headers"
+      :headers="computedHeaders"
       :items="items"
       :items-per-page="5"
       :loading="loading"
       class="elevation-1"
     >
+      <template v-slot:[`item.actions`]="{ item }">
+        <v-icon small color="primary" class="mr-2" @click="$emit('edit', item)">
+          mdi-pencil
+        </v-icon>
+      </template>
     </v-data-table>
   </div>
 </template>
@@ -26,9 +31,23 @@ export default {
       type: Boolean,
       default: false,
     },
+    showEdit: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    computedHeaders() {
+      // If showEdit is true, append an actions column configuration
+      if (this.showEdit) {
+        return [
+          ...this.headers,
+          { text: "Actions", value: "actions", sortable: false },
+        ];
+        // used it to safely combine the original table columns with the new 'Actions' column into a brand-new array, preventing us from breaking Vue's rule against modifying read-only props.
+      }
+      return this.headers;
+    },
   },
 };
 </script>
-
-<style lang="scss" scoped>
-</style>
