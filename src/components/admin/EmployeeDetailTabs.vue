@@ -17,7 +17,7 @@
         </v-card>
       </v-tab-item>
 
-      <!-- Leaves Placeholder -->
+      <!-- Leaves Tab -->
       <v-tab-item>
         <v-card flat>
           <v-card-text>
@@ -30,7 +30,7 @@
         </v-card>
       </v-tab-item>
 
-      <!-- Work Logs Placeholder -->
+      <!-- Work Logs Tab -->
       <v-tab-item>
         <v-card flat>
           <v-card-text> Work Logs Placeholder </v-card-text>
@@ -81,8 +81,8 @@ export default {
         },
         {
           date: "2026-06-03",
-          CheckIn: "N/A",
-          CheckOut: "N/A",
+          CheckIn: "--:--",
+          CheckOut: "--:--",
           Status: "Absent",
         },
         {
