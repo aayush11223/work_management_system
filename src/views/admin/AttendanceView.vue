@@ -2,8 +2,6 @@
   <div>
     <PageHeader title="Employees Attendance" />
 
-    <!-- splice, findIndex -->
-
     <TaBle
       :headers="headers"
       :items="records"
