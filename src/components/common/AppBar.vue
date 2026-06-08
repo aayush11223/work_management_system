@@ -39,8 +39,8 @@
 
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="red darken-1" text @click="logout"> YES </v-btn>
-                <v-btn @click="dialog = false" color="green darken-1" text>
+                <v-btn color="green darken-1" text @click="logout"> YES </v-btn>
+                <v-btn @click="dialog = false" color="red darken-1" text>
                   NO
                 </v-btn>
               </v-card-actions>
