@@ -20,14 +20,14 @@
         <v-row>
           <v-col cols="12">
             <v-text-field
-              readonly
+              type="time"
               v-model="form.checkIn"
               label="Check In Time"
             ></v-text-field>
           </v-col>
           <v-col cols="12">
             <v-text-field
-              readonly
+              type="time"
               v-model="form.checkOut"
               label="Check Out Time"
             ></v-text-field>
