@@ -1,8 +1,8 @@
 <template>
   <v-dialog :value="visible" persistent max-width="600px">
     <v-card>
-      <div class="d-flex justify-space-between">
-        <v-card-title class="mb-2"> Log Work </v-card-title>
+      <div class="d-flex justify-space-between align-center">
+        <v-card-title> Log Work </v-card-title>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn class="text-right" icon @click="$emit('close')">

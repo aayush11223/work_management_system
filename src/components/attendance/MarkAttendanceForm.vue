@@ -6,8 +6,8 @@
     persistent
   >
     <v-card>
-      <div class="d-flex justify-space-between">
-        <v-card-title class="mb-2"> Mark Attendance </v-card-title>
+      <div class="d-flex justify-space-between align-center">
+        <v-card-title> Mark Attendance </v-card-title>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn class="text-right" icon @click="$emit('close')">
@@ -62,14 +62,6 @@ export default {
     };
   },
 
-  mounted() {
-    const now = new Date();
-    this.form.checkIn = now.toLocaleTimeString();
-
-    const outDate = new Date();
-    outDate.setSeconds(outDate.getSeconds() + 1);
-    this.form.checkOut = outDate.toLocaleTimeString();
-  },
   methods: {
     submitForm() {
       this.$emit("submit");
