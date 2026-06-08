@@ -97,8 +97,8 @@ const routes = [
                 component: () => import("@/views/admin/AttendanceView.vue")
             },
             {
-                path: 'leaves',
-                component: () => import("@/views/admin/LeavesView.vue")
+                path: 'leavemanagement',
+                component: () => import("@/views/admin/LeaveManagementView.vue")
             },
             {
                 path: 'worklogs',
@@ -108,6 +108,7 @@ const routes = [
                 path: 'reports',
                 component: () => import("@/views/admin/ReportsView.vue")
             },
+
             //Employee Details based on id
             {
                 path: 'employees/:id',   // Vue handles the /admin/ prefix automatically

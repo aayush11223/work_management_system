@@ -64,7 +64,7 @@ export default {
         {
           title: "Leaves",
           icon: "mdi-briefcase-account-outline",
-          route: "/admin/leaves",
+          route: "/admin/leavemanagement",
         },
 
         { title: "Work Logs", icon: "mdi-clock", route: "/admin/worklogs" },
