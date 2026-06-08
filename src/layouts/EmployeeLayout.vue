@@ -15,7 +15,7 @@
 
     <!-- Vuetify automatically injects the correct padding-left here when drawer is open -->
     <v-main>
-      <v-container fluid class="mt-5">
+      <v-container fluid class="mt-5 ml-1">
         <v-card>
           <router-view />
         </v-card>
