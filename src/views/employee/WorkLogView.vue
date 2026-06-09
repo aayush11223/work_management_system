@@ -6,13 +6,21 @@
       @doAction="showDialog = true"
     />
 
-    <TaBle :headers="headers" :items="logs" :loading="loading" />
-
-    <WorkLogForm
-      :visible="showDialog"
-      @close="showDialog = false"
-      @submit="handleSubmit"
+    <EmptyStateVue
+      v-if="!logs.length"
+      class="text-center mt-6"
+      icon="mdi-alert-circle-outline"
+      message="No data found for this period"
     />
+
+    <div v-else>
+      <TaBle :headers="headers" :items="logs" :loading="loading" />
+      <WorkLogForm
+        :visible="showDialog"
+        @close="showDialog = false"
+        @submit="handleSubmit"
+      />
+    </div>
   </div>
 </template>
 
@@ -20,12 +28,14 @@
 import PageHeader from "@/components/common/PageBtn.vue";
 import TaBle from "@/components/common/TaBle.vue";
 import WorkLogForm from "@/components/worklog/WorkLogForm.vue";
+import EmptyStateVue from "@/components/common/EmptyState.vue";
 
 export default {
   components: {
     PageHeader,
     TaBle,
     WorkLogForm,
+    EmptyStateVue,
   },
 
   data() {

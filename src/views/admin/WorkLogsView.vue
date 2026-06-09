@@ -11,18 +11,27 @@
       class="mb-4"
     />
 
-    <TaBle :headers="tableHeaders" :items="filteredLogs" />
+    <EmptyStateVue
+      v-if="!workLogs.length"
+      class="text-center mt-6"
+      icon="mdi-alert-circle-outline"
+      message="No data found for this period"
+    />
+
+    <TaBle v-else :headers="tableHeaders" :items="filteredLogs" />
   </div>
 </template>
 
 <script>
 import PageHeader from "@/components/common/PageHeader.vue";
 import TaBle from "@/components/common/TaBle.vue";
+import EmptyStateVue from "@/components/common/EmptyState.vue";
 
 export default {
   components: {
     PageHeader,
     TaBle,
+    EmptyStateVue,
   },
   data() {
     return {

@@ -2,38 +2,49 @@
   <div>
     <PageHeader title="Employees Leave" />
 
-    <v-row class="mb-4">
-      <v-col cols="12" sm="4">
-        <v-select
-          v-model="selectedStatus"
-          :items="statusOptions"
-          label="Filter by Status"
-          outlined
-          dense
-          hide-details
-        ></v-select>
-      </v-col>
-    </v-row>
-
-    <LeaveRequestTable
-      :items="filteredLeaves"
-      :loading="false"
-      :showActions="true"
-      @approve="handleApprove"
-      @reject="handleReject"
+    <EmptyStateVue
+      v-if="!leaves.length"
+      class="text-center mt-6"
+      icon="mdi-alert-circle-outline"
+      message="No data found for this period"
     />
+
+    <div v-else>
+      <v-row class="mb-4">
+        <v-col cols="12" sm="4">
+          <v-select
+            v-model="selectedStatus"
+            :items="statusOptions"
+            label="Filter by Status"
+            outlined
+            dense
+            hide-details
+          ></v-select>
+        </v-col>
+      </v-row>
+
+      <LeaveRequestTable
+        :items="filteredLeaves"
+        :loading="false"
+        :showActions="true"
+        @approve="handleApprove"
+        @reject="handleReject"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import PageHeader from "@/components/common/PageHeader.vue";
 import LeaveRequestTable from "@/components/leave/LeaveRequestTable.vue";
+import EmptyStateVue from "@/components/common/EmptyState.vue";
 
 export default {
   name: "LeaveManagementView",
   components: {
     PageHeader,
     LeaveRequestTable,
+    EmptyStateVue,
   },
   data() {
     return {
