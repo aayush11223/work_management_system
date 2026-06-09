@@ -44,6 +44,7 @@
               :value="{ month: selectedMonth, year: selectedYear }"
               @change="handleMonthChange"
             />
+            <PaycheckSummaryCard :summary="summary" />
           </v-card-text>
         </v-card>
       </v-tab-item>
@@ -54,12 +55,14 @@
 <script>
 import TaBle from "@/components/common/TaBle.vue";
 import MonthPicker from "../paycheck/MonthPicker.vue";
+import PaycheckSummaryCard from "@/components/paycheck/PaycheckSummaryCard.vue";
 
 export default {
   name: "EmployeeDetailTabs",
   components: {
     TaBle,
     MonthPicker,
+    PaycheckSummaryCard,
   },
   data() {
     return {
@@ -165,6 +168,14 @@ export default {
       // Paycheck Tab
       selectedMonth: new Date().getMonth() + 1,
       selectedYear: new Date().getFullYear(),
+      summary: {
+        baseSalary: 3500,
+        earnedBaseSalary: 3500,
+        unitsBonus: 120,
+        grossPay: 3620,
+        taxDeduction: 150,
+        netPay: 3470,
+      },
     };
   },
   props: {
