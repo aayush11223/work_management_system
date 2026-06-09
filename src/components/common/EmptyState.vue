@@ -4,7 +4,6 @@
       {{ icon }}
     </v-icon>
 
-    <!-- Message Text -->
     <h2 class="text-h5 font-weight-medium mb-6">
       {{ message }}
     </h2>

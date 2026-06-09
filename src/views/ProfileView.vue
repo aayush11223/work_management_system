@@ -71,7 +71,7 @@
       </v-tab-item>
     </v-tabs-items>
 
-    <v-snackbar v-model="showSnackbar" color="success">
+    <v-snackbar v-model="showSnackbar" color="success" top>
       Password updated successfully
     </v-snackbar>
   </div>
