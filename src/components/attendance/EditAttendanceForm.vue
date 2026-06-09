@@ -1,12 +1,12 @@
 <template>
-  <v-dialog :value="visible" @click:outside="closeForm" max-width="500px">
+  <v-dialog :value="visible" max-width="500px" persistent>
     <v-card>
       <div class="d-flex justify-space-between align-center">
         <v-card-title> Edit Attendance </v-card-title>
         <v-card-actions>
           <v-spacer></v-spacer>
 
-          <v-btn class="text-right" icon @click="$emit('closeForm')">
+          <v-btn class="text-right" icon @click="closeForm">
             <v-icon color="red">mdi-close</v-icon>
           </v-btn>
         </v-card-actions>

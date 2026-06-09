@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PageHeader title="Employees Attendance" />
+    <PageHeader title="Employee Attendance" />
 
     <TaBle
       :headers="headers"
@@ -75,7 +75,7 @@ export default {
       const index = this.records.findIndex((r) => r.id === updatedRecord.id);
 
       if (index !== -1) {
-        // Vue 2 reactive array replacement
+        // reactive array replacement
         this.$set(this.records, index, updatedRecord);
       }
 
