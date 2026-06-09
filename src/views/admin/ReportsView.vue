@@ -7,7 +7,7 @@
     />
 
     <!-- Snackbar -->
-    <v-snackbar v-model="snackbar" :vertical="vertical">
+    <v-snackbar top v-model="snackbar" :vertical="vertical">
       {{ text }}
       <template v-slot:action="{ attrs }">
         <v-btn color="primary" text v-bind="attrs" @click="snackbar = false">
