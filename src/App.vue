@@ -1,33 +1,38 @@
 <template>
   <v-app>
     <router-view />
+
     <AppSnackbar
-      :message="message"
-      :visible="visible"
-      @open="handleOpen"
-      @close="handleClose"
+      :message="snackbar.message"
+      :type="snackbar.type"
+      :visible="snackbar.visible"
+      @close="snackbar.visible = false"
     />
   </v-app>
 </template>
 
 <script>
 import AppSnackbar from "./components/common/AppSnackbar.vue";
+
 export default {
   name: "App",
   components: { AppSnackbar },
+
   data() {
     return {
-      message: "Hello, I'm a snackbar",
-      visible: false,
+      snackbar: {
+        visible: false,
+        message: "",
+        type: "success",
+      },
     };
   },
 
   methods: {
-    handleOpen() {
-      this.visible = true;
-    },
-    handleClose() {
-      this.visible = false;
+    showSnackbar({ message, type }) {
+      this.snackbar.message = message;
+      this.snackbar.type = type;
+      this.snackbar.visible = true;
     },
   },
 };
