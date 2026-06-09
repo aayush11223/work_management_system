@@ -6,8 +6,8 @@
     persistent
   >
     <v-card>
-      <div class="d-flex justify-space-between">
-        <v-card-title class="mb-2"> Request Leave </v-card-title>
+      <div class="d-flex justify-space-between align-center">
+        <v-card-title> Request Leave </v-card-title>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn class="text-right" icon @click="$emit('close')">
@@ -59,7 +59,7 @@
 
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
+        <v-btn color="red darken-1" text @click="close">Cancel</v-btn>
         <v-btn color="blue darken-1" text @click="submit">Submit</v-btn>
       </v-card-actions>
     </v-card>

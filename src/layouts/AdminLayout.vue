@@ -14,7 +14,7 @@
     />
 
     <v-main class="mt-5">
-      <v-container>
+      <v-container fluid>
         <v-card auto>
           <router-view />
         </v-card>
@@ -64,7 +64,7 @@ export default {
         {
           title: "Leaves",
           icon: "mdi-briefcase-account-outline",
-          route: "/admin/leaves",
+          route: "/admin/leavemanagement",
         },
 
         { title: "Work Logs", icon: "mdi-clock", route: "/admin/worklogs" },

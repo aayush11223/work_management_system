@@ -1,71 +1,75 @@
 <template>
   <div>
-    <!-- User Info Card -->
-    <v-card class="mb-4" flat>
-      <v-card-title>Profile Information</v-card-title>
+    <v-tabs dark v-model="activeTab">
+      <v-tab>Profile Info</v-tab>
+      <!-- Vuetify internally treats this as index 0  -->
+      <v-tab>Change Password</v-tab>
+      <!-- Vuetify internally treats this as index 1 -->
+    </v-tabs>
 
-      <v-simple-table>
-        <tbody>
-          <tr>
-            <td><strong>Name</strong></td>
-            <td>{{ user.name }}</td>
-          </tr>
+    <!-- Both v-tabs and v-tabs-items share the same v-model -->
 
-          <tr>
-            <td><strong>Email</strong></td>
-            <td>{{ user.email }}</td>
-          </tr>
+    <v-tabs-items v-model="activeTab">
+      <!-- Tab 1: Profile Info -->
+      <v-tab-item>
+        <v-card flat class="mt-4">
+          <v-simple-table>
+            <tbody>
+              <tr>
+                <td><strong>Name</strong></td>
+                <td>{{ user.name }}</td>
+              </tr>
+              <tr>
+                <td><strong>Email</strong></td>
+                <td>{{ user.email }}</td>
+              </tr>
+              <tr>
+                <td><strong>Department</strong></td>
+                <td>{{ user.department }}</td>
+              </tr>
+              <tr>
+                <td><strong>Role</strong></td>
+                <td>{{ user.role }}</td>
+              </tr>
+              <tr>
+                <td><strong>Phone</strong></td>
+                <td>{{ user.phone }}</td>
+              </tr>
+            </tbody>
+          </v-simple-table>
+        </v-card>
+      </v-tab-item>
 
-          <tr>
-            <td><strong>Department</strong></td>
-            <td>{{ user.department }}</td>
-          </tr>
-
-          <tr>
-            <td><strong>Role</strong></td>
-            <td>{{ user.role }}</td>
-          </tr>
-
-          <tr>
-            <td><strong>Phone</strong></td>
-            <td>{{ user.phone }}</td>
-          </tr>
-        </tbody>
-      </v-simple-table>
-    </v-card>
-    <v-divider> </v-divider>
-
-    <!-- Password Card -->
-    <v-card class="pt-4" flat>
-      <v-card-title>Change Password</v-card-title>
-
-      <v-form ref="form" class="pl-4">
-        <v-text-field
-          v-model="passwordForm.currentPassword"
-          label="Current Password"
-          type="password"
-          :rules="[rules.required]"
-        />
-
-        <v-text-field
-          v-model="passwordForm.newPassword"
-          label="New Password"
-          type="password"
-          :rules="[rules.required, rules.minPassword]"
-        />
-
-        <v-text-field
-          v-model="passwordForm.confirmPassword"
-          label="Confirm New Password"
-          type="password"
-          :rules="[rules.required, rules.passwordMatch]"
-        />
-
-        <v-btn class="mb-8" color="primary" @click="changePassword">
-          Change Password
-        </v-btn>
-      </v-form>
-    </v-card>
+      <!-- Tab 2: Change Password -->
+      <v-tab-item>
+        <v-card flat class="mt-4">
+          <v-card-title>Change Password</v-card-title>
+          <v-form ref="form" class="pl-4">
+            <v-text-field
+              v-model="passwordForm.currentPassword"
+              label="Current Password"
+              type="password"
+              :rules="[rules.required]"
+            />
+            <v-text-field
+              v-model="passwordForm.newPassword"
+              label="New Password"
+              type="password"
+              :rules="[rules.required, rules.minPassword]"
+            />
+            <v-text-field
+              v-model="passwordForm.confirmPassword"
+              label="Confirm New Password"
+              type="password"
+              :rules="[rules.required, rules.passwordMatch]"
+            />
+            <v-btn small class="mb-8" color="primary" @click="changePassword">
+              Change Password
+            </v-btn>
+          </v-form>
+        </v-card>
+      </v-tab-item>
+    </v-tabs-items>
 
     <v-snackbar v-model="showSnackbar" color="success">
       Password updated successfully
@@ -79,6 +83,8 @@ export default {
 
   data() {
     return {
+      activeTab: 0, // <-- tracks which tab is active (0 = Profile, 1 = Password)
+
       user: {
         name: "Aayush Basnet",
         email: "aayush@example.com",
@@ -97,10 +103,8 @@ export default {
 
       rules: {
         required: (v) => !!v || "This field is required",
-
         minPassword: (v) =>
           (v && v.length >= 6) || "Password must be at least 6 characters",
-
         passwordMatch: (v) =>
           v === this.passwordForm.newPassword || "Passwords do not match",
       },
@@ -110,11 +114,9 @@ export default {
   methods: {
     changePassword() {
       const valid = this.$refs.form.validate();
-
       if (!valid) return;
 
       this.showSnackbar = true;
-
       this.passwordForm = {
         currentPassword: "",
         newPassword: "",

@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar class="pl-2" app dark flat>
+  <v-app-bar app dark flat>
     <v-app-bar-nav-icon @click="toggleNav"></v-app-bar-nav-icon>
     <v-toolbar-title>{{ title }}</v-toolbar-title>
     <v-spacer></v-spacer>
@@ -26,8 +26,26 @@
         <v-divider></v-divider>
 
         <!-- Logout -->
-        <v-list-item to="/login">
-          <v-list-item-title class="red--text">Logout</v-list-item-title>
+        <v-list-item>
+          <!-- v-dialog -->
+          <v-dialog v-model="dialog" persistent max-width="300">
+            <template v-slot:activator="{ on, attrs }">
+              <div class="red--text" v-bind="attrs" v-on="on">Log Out</div>
+            </template>
+            <v-card>
+              <v-card-title class="text-h5">
+                Do you want to logout?
+              </v-card-title>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="green darken-1" text @click="logout"> YES </v-btn>
+                <v-btn @click="dialog = false" color="red darken-1" text>
+                  NO
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -36,6 +54,12 @@
 
 <script>
 export default {
+  data() {
+    return {
+      dialog: false,
+    };
+  },
+
   props: {
     drawer: {
       type: Boolean,
@@ -55,6 +79,10 @@ export default {
   },
 
   methods: {
+    logout() {
+      this.$router.push("/login");
+    },
+
     toggleNav() {
       this.$emit("enable", !this.drawer);
     },

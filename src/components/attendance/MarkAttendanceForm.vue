@@ -6,8 +6,8 @@
     persistent
   >
     <v-card>
-      <div class="d-flex justify-space-between">
-        <v-card-title class="mb-2"> Mark Attendance </v-card-title>
+      <div class="d-flex justify-space-between align-center">
+        <v-card-title> Mark Attendance </v-card-title>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn class="text-right" icon @click="$emit('close')">
@@ -20,14 +20,14 @@
         <v-row>
           <v-col cols="12">
             <v-text-field
-              readonly
+              type="time"
               v-model="form.checkIn"
               label="Check In Time"
             ></v-text-field>
           </v-col>
           <v-col cols="12">
             <v-text-field
-              readonly
+              type="time"
               v-model="form.checkOut"
               label="Check Out Time"
             ></v-text-field>
@@ -37,7 +37,7 @@
 
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="blue darken-1" text @click="$emit('close')">
+        <v-btn color="red darken-1" text @click="$emit('close')">
           Cancel
         </v-btn>
         <v-btn color="blue darken-1" text @click="submitForm"> Submit </v-btn>
@@ -62,14 +62,6 @@ export default {
     };
   },
 
-  mounted() {
-    const now = new Date();
-    this.form.checkIn = now.toLocaleTimeString();
-
-    const outDate = new Date();
-    outDate.setSeconds(outDate.getSeconds() + 1);
-    this.form.checkOut = outDate.toLocaleTimeString();
-  },
   methods: {
     submitForm() {
       this.$emit("submit");

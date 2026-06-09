@@ -17,30 +17,35 @@
         </v-card>
       </v-tab-item>
 
-      <!-- Leaves Placeholder -->
+      <!-- Leaves Tab -->
       <v-tab-item>
         <v-card flat>
           <v-card-text>
-            <TaBle
-              :headers="leaveHeaders"
-              :items="leaveRecords"
-              :showActions="false"
-            />
+            <TaBle :headers="leaveHeaders" :items="leaveRecords" />
           </v-card-text>
         </v-card>
       </v-tab-item>
 
-      <!-- Work Logs Placeholder -->
+      <!-- Work Logs Tab -->
       <v-tab-item>
         <v-card flat>
-          <v-card-text> Work Logs Placeholder </v-card-text>
+          <v-card-text>
+            <TaBle :headers="logHeaders" :items="logRecords" />
+          </v-card-text>
         </v-card>
       </v-tab-item>
 
-      <!-- Paycheck Placeholder -->
+      <!-- Paycheck  -->
+      <!-- Import PaycheckSummaryCard and MonthPicker -->
       <v-tab-item>
         <v-card flat>
-          <v-card-text> Paycheck Placeholder </v-card-text>
+          <v-card-text>
+            <MonthPicker
+              :value="{ month: selectedMonth, year: selectedYear }"
+              @change="handleMonthChange"
+            />
+            <PaycheckSummaryCard :summary="summary" />
+          </v-card-text>
         </v-card>
       </v-tab-item>
     </v-tabs-items>
@@ -49,16 +54,21 @@
 
 <script>
 import TaBle from "@/components/common/TaBle.vue";
+import MonthPicker from "../paycheck/MonthPicker.vue";
+import PaycheckSummaryCard from "@/components/paycheck/PaycheckSummaryCard.vue";
 
 export default {
   name: "EmployeeDetailTabs",
   components: {
     TaBle,
+    MonthPicker,
+    PaycheckSummaryCard,
   },
   data() {
     return {
       activeTab: null,
 
+      //  Attendance Tab
       headers: [
         { text: "Date", value: "date" },
         { text: "Check In", value: "CheckIn" },
@@ -81,8 +91,8 @@ export default {
         },
         {
           date: "2026-06-03",
-          CheckIn: "N/A",
-          CheckOut: "N/A",
+          CheckIn: "--:--",
+          CheckOut: "--:--",
           Status: "Absent",
         },
         {
@@ -92,6 +102,8 @@ export default {
           Status: "Present",
         },
       ],
+
+      // Leaves Tab
       leaveHeaders: [
         { text: "Leave Type", value: "leaveType" },
         { text: "Start Date", value: "startDate" },
@@ -118,12 +130,65 @@ export default {
           status: "Pending",
         },
       ],
+
+      // Work Logs Tab
+      logHeaders: [
+        { text: "Date", value: "date" },
+        { text: "Description", value: "description" },
+        { text: "Units", value: "units" },
+        { text: "Hours", value: "hours" },
+      ],
+      logRecords: [
+        {
+          date: "2026-06-01",
+          description: "System debugging and error log analysis",
+          units: 2,
+          hours: 4,
+        },
+        {
+          date: "2026-06-02",
+          description: "Frontend UI component redesign",
+          units: 4,
+          hours: 8,
+        },
+        {
+          date: "2026-06-03",
+          description: "Database schema migration and testing",
+          units: 3,
+          hours: 6,
+        },
+        {
+          date: "2026-06-04",
+          description: "Team sync and sprint planning documentation",
+          units: 1,
+          hours: 2,
+        },
+      ],
+
+      // Paycheck Tab
+      selectedMonth: new Date().getMonth() + 1,
+      selectedYear: new Date().getFullYear(),
+      summary: {
+        baseSalary: 3500,
+        earnedBaseSalary: 3500,
+        unitsBonus: 120,
+        grossPay: 3620,
+        taxDeduction: 150,
+        netPay: 3470,
+      },
     };
   },
   props: {
     employeeId: {
       type: [String, Number],
       required: true,
+    },
+  },
+
+  methods: {
+    handleMonthChange(value) {
+      this.selectedMonth = value.month;
+      this.selectedYear = value.year;
     },
   },
 };

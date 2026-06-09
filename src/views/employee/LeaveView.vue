@@ -7,13 +7,25 @@
       @doAction="showDialog = true"
     />
 
-    <LeaveRequestTable :items="leaves" :loading="false" :showActions="false" />
-
-    <LeaveRequestForm
-      :visible="showDialog"
-      @close="showDialog = false"
-      @submit="handleSubmit"
+    <EmptyStateVue
+      v-if="!leaves.length"
+      class="text-center mt-6"
+      icon="mdi-alert-circle-outline"
+      message="No data found for this period"
     />
+
+    <div v-else>
+      <LeaveRequestTable
+        :items="leaves"
+        :loading="false"
+        :showActions="false"
+      />
+      <LeaveRequestForm
+        :visible="showDialog"
+        @close="showDialog = false"
+        @submit="handleSubmit"
+      />
+    </div>
   </div>
 </template>
 
@@ -21,6 +33,7 @@
 import PageHeader from "@/components/common/PageBtn.vue";
 import LeaveRequestTable from "@/components/leave/LeaveRequestTable.vue";
 import LeaveRequestForm from "@/components/leave/LeaveRequestForm.vue";
+import EmptyStateVue from "@/components/common/EmptyState.vue";
 
 export default {
   name: "LeaveView",
@@ -29,6 +42,7 @@ export default {
     PageHeader,
     LeaveRequestTable,
     LeaveRequestForm,
+    EmptyStateVue,
   },
 
   data() {
