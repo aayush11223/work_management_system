@@ -3,7 +3,6 @@ export const store = {
         name: "Aayush",
         email: "aayush@gmail.com",
         department: "Development",
-
         role: "Front End Developer",
         phone: "+977 9000000000"
 
@@ -155,7 +154,7 @@ export const store = {
         },
     ],
 
-    //logs from admin WorkLogsView
+    //logs from admin WorkLogManagementView
     adminLogs: [
         {
             id: 101,

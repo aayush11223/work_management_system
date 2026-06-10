@@ -45,18 +45,14 @@ export default {
   data() {
     return {
       showDialog: false,
+      leaves: store.leave,
     };
   },
-  computed: {
-    leaves() {
-      return store.leave;
-    },
-  },
+
   methods: {
     handleSubmit(formData) {
-      // Create new leave object with a unique id and pending status
       const newLeave = {
-        id: store.leave.length + 1,
+        id: this.leaves.length + 1,
         type: formData.leaveType,
         from: formData.fromDate,
         to: formData.toDate,
@@ -64,10 +60,7 @@ export default {
         status: "pending",
       };
 
-      // Push into the store array; Vue reactivity automatically updates the UI
-      store.leave.push(newLeave);
-
-      // Close the dialog
+      this.leaves.push(newLeave);
       this.showDialog = false;
     },
   },
