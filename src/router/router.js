@@ -104,10 +104,6 @@ const routes = [
                 path: 'worklogs',
                 component: () => import("@/views/admin/WorkLogManagementView.vue")
             },
-            {
-                path: 'reports',
-                component: () => import("@/views/admin/ReportsView.vue")
-            },
 
             //Employee Details based on id
             {
