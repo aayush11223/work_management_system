@@ -68,8 +68,6 @@ export default {
         },
 
         { title: "Work Logs", icon: "mdi-clock", route: "/admin/worklogs" },
-
-        { title: "Reports", icon: "mdi-poll", route: "/admin/reports" },
       ],
     };
   },

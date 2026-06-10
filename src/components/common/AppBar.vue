@@ -9,7 +9,9 @@
       <template v-slot:activator="{ on, attrs }">
         <v-btn class="mr-1" dark icon v-bind="attrs" v-on="on">
           <v-icon x-large> mdi-account-circle </v-icon>
+          <!-- {{ userName }} -->
         </v-btn>
+        <h3 class="pr-2 font-weight-regular">{{ userName }}</h3>
       </template>
 
       <v-list>
@@ -53,6 +55,7 @@
 </template>
 
 <script>
+import { store } from "@/store/store.js";
 export default {
   data() {
     return {
@@ -70,6 +73,9 @@ export default {
   },
 
   computed: {
+    userName() {
+      return store.user.name;
+    },
     isUser() {
       return this.$route.path === "/dashboard";
     },

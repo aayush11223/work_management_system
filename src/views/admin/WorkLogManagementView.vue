@@ -12,7 +12,7 @@
     />
 
     <EmptyStateVue
-      v-if="!workLogs.length"
+      v-if="!adminLogs.length"
       class="text-center mt-6"
       icon="mdi-alert-circle-outline"
       message="No data found for this period"
@@ -26,6 +26,7 @@
 import PageHeader from "@/components/common/PageHeader.vue";
 import TaBle from "@/components/common/TaBle.vue";
 import EmptyStateVue from "@/components/common/EmptyState.vue";
+import { store } from "@/store/store.js";
 
 export default {
   components: {
@@ -37,44 +38,6 @@ export default {
     return {
       searchQuery: "",
 
-      workLogs: [
-        {
-          id: 101,
-          employeeName: "Aayush",
-          date: "2026-06-01",
-          task: "Fix navigation bug",
-          hours: 4,
-        },
-        {
-          id: 102,
-          employeeName: "Rohan",
-          date: "2026-06-01",
-          task: "Update API documentation",
-          hours: 6,
-        },
-        {
-          id: 103,
-          employeeName: "Sita",
-          date: "2026-06-02",
-          task: "Database migration",
-          hours: 8,
-        },
-        {
-          id: 104,
-          employeeName: "Niranjan",
-          date: "2026-06-02",
-          task: "Implement new UI component",
-          hours: 5,
-        },
-        {
-          id: 105,
-          employeeName: "Anjali",
-          date: "2026-06-03",
-          task: "Weekly code review",
-          hours: 3,
-        },
-      ],
-
       tableHeaders: [
         { text: "Employee Name", value: "employeeName" },
         { text: "Date", value: "date" },
@@ -84,12 +47,15 @@ export default {
     };
   },
   computed: {
+    adminLogs() {
+      return store.adminLogs;
+    },
     // Computed property to filter work logs by employeeName
     filteredLogs() {
-      if (!this.searchQuery) return this.workLogs;
+      if (!this.searchQuery) return store.adminLogs;
 
       const query = this.searchQuery.toLowerCase();
-      return this.workLogs.filter((log) =>
+      return store.adminLogs.filter((log) =>
         log.employeeName.toLowerCase().includes(query)
       );
     },
