@@ -94,7 +94,7 @@ const routes = [
             },
             {
                 path: 'attendance',
-                component: () => import("@/views/admin/AttendanceView.vue")
+                component: () => import("@/views/admin/AttendanceManagementView.vue")
             },
             {
                 path: 'leavemanagement',
@@ -102,11 +102,7 @@ const routes = [
             },
             {
                 path: 'worklogs',
-                component: () => import("@/views/admin/WorkLogsView.vue")
-            },
-            {
-                path: 'reports',
-                component: () => import("@/views/admin/ReportsView.vue")
+                component: () => import("@/views/admin/WorkLogManagementView.vue")
             },
 
             //Employee Details based on id

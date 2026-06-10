@@ -78,20 +78,13 @@
 </template>
 
 <script>
+import { store } from "@/store/store.js";
 export default {
   name: "ProfileView",
 
   data() {
     return {
       activeTab: 0, // <-- tracks which tab is active (0 = Profile, 1 = Password)
-
-      user: {
-        name: "Aayush Basnet",
-        email: "aayush@example.com",
-        department: "IT",
-        role: "Frontend Developer",
-        phone: "+977-9800000000",
-      },
 
       passwordForm: {
         currentPassword: "",
@@ -109,6 +102,12 @@ export default {
           v === this.passwordForm.newPassword || "Passwords do not match",
       },
     };
+  },
+
+  computed: {
+    user() {
+      return store.user;
+    },
   },
 
   methods: {

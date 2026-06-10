@@ -2,8 +2,8 @@ export const store = {
     user: {
         name: "Aayush",
         email: "aayush@gmail.com",
-        role: "Front End Developer",
         department: "Development",
+        role: "Front End Developer",
         phone: "+977 9000000000"
 
     },
@@ -154,7 +154,7 @@ export const store = {
         },
     ],
 
-    //logs from admin WorkLogsView
+    //logs from admin WorkLogManagementView
     adminLogs: [
         {
             id: 101,
@@ -243,7 +243,7 @@ export const store = {
     ],
 
     //paycheck from MonthlySummaryView
-    paycheckSummary: {
+    summary: {
         baseSalary: 3500,
         earnedBaseSalary: 3500,
         unitsBonus: 120,
