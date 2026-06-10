@@ -43,7 +43,7 @@ import PageHeader from "@/components/common/PageHeader.vue";
 import LeaveRequestTable from "@/components/leave/LeaveRequestTable.vue";
 import EmptyStateVue from "@/components/common/EmptyState.vue";
 import ConfirmDialog from "@/components/common/ConfirmDialog.vue";
-import { store } from "@/store/store.js"; // Imported central store
+import { store } from "@/store/store.js";
 
 export default {
   name: "LeaveManagementView",
