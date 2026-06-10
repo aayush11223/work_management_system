@@ -38,6 +38,7 @@
 import PaycheckSummaryCard from "@/components/paycheck/PaycheckSummaryCard.vue";
 import StatCard from "@/components/common/StatCard.vue";
 import MonthPicker from "@/components/paycheck/MonthPicker.vue";
+import { store } from "@/store/store.js";
 
 export default {
   components: {
@@ -73,14 +74,7 @@ export default {
         },
       ],
 
-      summary: {
-        baseSalary: 3500,
-        earnedBaseSalary: 3500,
-        unitsBonus: 120,
-        grossPay: 3620,
-        taxDeduction: 150,
-        netPay: 3470,
-      },
+      summary: store.summary,
     };
   },
 

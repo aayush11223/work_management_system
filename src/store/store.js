@@ -243,7 +243,7 @@ export const store = {
     ],
 
     //paycheck from MonthlySummaryView
-    paycheckSummary: {
+    summary: {
         baseSalary: 3500,
         earnedBaseSalary: 3500,
         unitsBonus: 120,
