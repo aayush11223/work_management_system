@@ -2,7 +2,7 @@
   <div>
     <PageHeader :title="title" />
 
-    <AppLoader :loading="loading" />
+    <!-- <AppLoader :loading="loading" /> -->
 
     <v-row class="mt-2">
       <v-col
@@ -104,7 +104,7 @@
 <script>
 import PageHeader from "@/components/common/PageHeader.vue";
 import StatCard from "@/components/common/StatCard.vue";
-import AppLoader from "@/components/common/AppLoader.vue";
+// import AppLoader from "@/components/common/AppLoader.vue";
 
 export default {
   data() {
@@ -116,15 +116,15 @@ export default {
   components: {
     StatCard,
     PageHeader,
-    AppLoader,
+    // AppLoader,
   },
 
   //for initializing loading
-  mounted() {
-    setTimeout(() => {
-      this.loading = false;
-    }, 1000);
-  },
+  // mounted() {
+  //   setTimeout(() => {
+  //     this.loading = false;
+  //   }, 1000);
+  // },
 
   computed: {
     isAdmin() {
