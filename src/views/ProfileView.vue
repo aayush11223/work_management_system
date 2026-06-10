@@ -78,6 +78,7 @@
 </template>
 
 <script>
+// import StoreJS from "@/store/store.js";
 export default {
   name: "ProfileView",
 

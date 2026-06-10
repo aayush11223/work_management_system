@@ -94,7 +94,7 @@ const routes = [
             },
             {
                 path: 'attendance',
-                component: () => import("@/views/admin/AttendanceView.vue")
+                component: () => import("@/views/admin/AttendanceManagementView.vue")
             },
             {
                 path: 'leavemanagement',
@@ -102,7 +102,7 @@ const routes = [
             },
             {
                 path: 'worklogs',
-                component: () => import("@/views/admin/WorkLogsView.vue")
+                component: () => import("@/views/admin/WorkLogManagementView.vue")
             },
             {
                 path: 'reports',
