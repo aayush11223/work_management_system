@@ -54,6 +54,12 @@ export default {
     };
   },
 
+  computed: {
+    logs() {
+      return store.logs;
+    },
+  },
+
   methods: {
     handleSubmit(newLog) {
       this.logs.push({
