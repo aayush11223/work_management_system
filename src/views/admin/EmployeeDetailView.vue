@@ -18,7 +18,7 @@
   </v-card>
 </template>
 
-<<script>
+<script>
 import EmployeeDetailTabs from "@/components/admin/EmployeeDetailTabs.vue";
 import { store } from "@/store/store.js";
 
